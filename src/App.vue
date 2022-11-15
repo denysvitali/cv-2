@@ -2,6 +2,7 @@
 import CVHeader from './components/CVHeader.vue';
 import CVIntroduction from '@/components/CVIntroduction.vue';
 import CVExperience from '@/components/CVExperience.vue';
+import CVEducation from '@/components/CVEducation.vue';
 </script>
 
 <template>

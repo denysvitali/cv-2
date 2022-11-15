@@ -107,13 +107,16 @@ let experiences = [
         <div class="experiences">
             <div class="company" v-for="exp in experiences">
                 <img :src="'/companies/square/' + exp.icon" class="company-logo"/>
-                <div class="experience-desc">
-                    <div class="experience-top">
-                        <div class="company-name">{{ exp.company }}</div>
-                        <div class="location">{{ exp.location }}</div>
-                        <a :href="exp.url" v-if="exp.url" target="_blank">{{ exp.url }}</a>
-                    </div>
 
+                <div class="experience-top">
+                    <div class="company-name">{{ exp.company }}</div>
+                    <div class="location">{{ exp.location }}</div>
+                    <a :href="exp.url" v-if="exp.url" target="_blank">{{ exp.url }}</a>
+                </div>
+
+                <div class="line"></div>
+
+                <div class="experience-desc">
                     <div class="positions">
                         <div class="position" v-for="position in exp.positions">
                             <div class="title">{{ position.title }}</div>
@@ -144,9 +147,14 @@ let experiences = [
         flex-direction: column;
         row-gap: 80px;
         div.company {
-            display: flex;
-            flex-direction: row;
+            display: grid;
+            grid-template-columns: $companyLogoSize 1fr;
+            grid-auto-rows: minmax(100px, auto);
             column-gap: 40px;
+
+            div.company-name {
+                font-size: 18px;
+            }
 
             img.company-logo {
                 width: $companyLogoSize;
@@ -155,11 +163,20 @@ let experiences = [
                 border-radius: 5px;
             }
 
-            div.experience-desc {
+            div.line {
+                margin-left: auto;
+                margin-right: auto;
+                background-color: var(--color-position-line);
+                width: 2px;
+                height: auto;
+            }
 
-                div.experience-top {
-                    height: $companyLogoSize;
-                }
+            div.experience-top {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: $companyLogoSize;
+
                 div.company-name {
                     font-weight: bold;
                 }
@@ -168,16 +185,18 @@ let experiences = [
                     font-size: 14px;
                     color: var(--color-text-soft);
                 }
+            }
+
+            div.experience-desc {
 
                 div.positions {
                     display: flex;
                     flex-direction: column;
                     row-gap: 3em;
-                    margin-top: 2rem;
                     div.position {
                         div.title {
                             font-weight: bold;
-                            font-size: 1.2em;
+                            font-size: 18px;
                         }
 
                         div.from-to {
