@@ -93,6 +93,10 @@ let education = [
             }
 
             .school-logo {
+                background-color: #FFF;
+                color: #000;
+                object-fit: contain;
+                padding: 5px;
                 width: $companyLogoSize;
                 height: $companyLogoSize;
                 object-fit: contain;

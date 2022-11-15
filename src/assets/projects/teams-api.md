@@ -1,0 +1,2 @@
+An unofficial wrapper for the unofficial Microsoft Teams API,
+used as an integration in [fossteams/teams-cli](https://github.com/fossteams/teams-cli), [fossteams/fossteams-backend](https://github.com/fossteams/fossteams-backend) and visualized with [fossteams/fossteams-frontend](https://github.com/fossteams/fossteams-frontend) and the Flutter UI [fossteams/fossteams_gui](https://github.com/fossteams/fossteams_gui).

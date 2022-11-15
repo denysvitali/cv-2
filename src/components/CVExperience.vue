@@ -159,7 +159,9 @@ let experiences = [
             img.company-logo {
                 width: $companyLogoSize;
                 height: $companyLogoSize;
-                object-fit: cover;
+                background-color: #FFF;
+                object-fit: contain;
+                padding: 5px;
                 border-radius: 5px;
             }
 

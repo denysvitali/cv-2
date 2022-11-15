@@ -62,6 +62,7 @@ let contactInfo = {
             height: $size;
             object-fit: cover;
             border-radius: $size;
+            box-shadow: 0px 3px 24px 3px var(--color-shadow);
         }
 
         div.contact-info {

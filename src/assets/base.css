@@ -38,11 +38,12 @@
   --color-link-visited: #7704d6;
 
   --color-position-line: #CCC;
+  --color-shadow: #AAA;
 
   --section-gap: 160px;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
     --color-background: var(--vt-c-black);
     --color-background-soft: var(--vt-c-black-soft);
@@ -53,8 +54,13 @@
 
     --color-heading: var(--vt-c-text-dark-1);
     --color-text: var(--vt-c-text-dark-2);
+    --color-text-soft: var(--vt-c-text-dark-2);
+    --color-shadow: transparent;
+
+    --color-link: #6fa5e2;
+    --color-link-visited: #c282ff;
   }
-} */
+}
 
 *,
 *::before,
