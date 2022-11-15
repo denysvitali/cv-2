@@ -1,0 +1,15 @@
+@import './base.css';
+
+#app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  font-weight: normal;
+}
+
+h1,h2,h3,h4,h5 {
+  font-weight: bold;
+  margin-top: 0.7em;
+  margin-bottom: 0.7em;
+}

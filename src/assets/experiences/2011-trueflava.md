@@ -1,0 +1,1 @@
+Collaboration and code review during the development of websites for many famous italian artists (Guè Pequeno, Two Fingerz, Danti, Fedez, J-Ax) and italian firms (Zelig, Newtopia, Best Sound, RockTV / HipHopTV). Server management.
