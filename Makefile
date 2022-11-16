@@ -35,6 +35,8 @@ docker-run:
 		--name $(CONTAINER_NAME)-nginx \
 		"$(IMAGE_REF)"
 
+docker-push:
+	docker push "$(IMAGE_REF)"
 
 render:
 	docker 
