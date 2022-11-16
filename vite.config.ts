@@ -12,7 +12,6 @@ function mdRaw() {
         const json = JSON.stringify(code)
         .replace(/\u2028/g, '\\u2028')
         .replace(/\u2029/g, '\\u2029');
-
         return {
           code: `export default ${json}`
         }

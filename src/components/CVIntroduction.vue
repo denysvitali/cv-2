@@ -1,4 +1,4 @@
-<script type="ts" setup>
+<script setup lang="ts" >
 import Introduction from '@/assets/snippets/introduction.md';
 import { marked } from 'marked';
 </script>

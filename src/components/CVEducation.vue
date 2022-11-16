@@ -1,6 +1,4 @@
-<script type="ts" setup>
-import { marked } from 'marked';
-
+<script setup lang="ts" >
 let education = [
     {
         name: 'University Of Applied Sciences of Southern Switzerland (SUPSI)',

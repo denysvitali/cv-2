@@ -1,4 +1,4 @@
-<script type="ts" setup>
+<script setup lang="ts" >
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 let basicInfo = {
@@ -8,7 +8,17 @@ let basicInfo = {
     'citizenship': {'icon': '🇨🇭', value: 'Swiss Citizen'}
 };
 
-let contactInfo = {
+type ContactInfo = {
+    icon: string,
+    value: string,
+    url?: string,
+}
+
+type ContactMap = {
+    [id: string]: ContactInfo;
+}
+
+let contactInfo : ContactMap = {
     'email': {'icon': 'fa-solid fa-envelope', 'value': 'denys@denv.it'},
     'web': {'icon': 'fa-solid fa-link', 'value': 'denv.it', 'url': 'https://denv.it'},
     'github': {'icon': 'fa-brands fa-github', value: '@denysvitali', 'url': 'https://github.com/denysvitali' },

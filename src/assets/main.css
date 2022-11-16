@@ -12,4 +12,13 @@ h1,h2,h3,h4,h5 {
   font-weight: bold;
   margin-top: 0.7em;
   margin-bottom: 0.7em;
+
+  break-before: auto;
+  break-after: auto;
+}
+
+@media print {
+  * {
+      float: none !important;
+  }
 }

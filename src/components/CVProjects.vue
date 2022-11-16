@@ -1,6 +1,8 @@
-<script type="ts" setup>
+<script setup lang="ts" >
 import { marked } from 'marked';
 import TeamsApi from '@/assets/projects/teams-api.md';
+import GtfsServer from '@/assets/projects/gtfs-server.md';
+
 
 let projects = [
     {
@@ -8,6 +10,12 @@ let projects = [
         url: 'https://github.com/fossteams/teams-api',
         description: marked.parse(TeamsApi),
         tech: ['go', 'flutter', 'vue'],
+    },
+    {
+        name: 'gtfs-server',
+        url: 'https://github.com/denysvitali/gtfs-server',
+        description: marked.parse(GtfsServer),
+        tech: ['rust', 'postgresql'],
     },
     {
         name: 'surface-pro-x-linux',
@@ -20,17 +28,10 @@ let projects = [
         url: 'https://github.com/pixelc-linux/documentation',
         description: 'Patches and images to run Linux on the Google Pixel C',
         tech: ['linux'],
-    },
-    {
-        name: 'thebestmotherfuckingwebiste',
-        url: 'https://thebestmotherfucking.website',
-        description: 'The title says it all.',
     }
 ];
-</script>
 
-<script type="ts">
-function formatLink(link) {
+function formatLink(link: string): string {
     const GITHUB_URL = 'https://github.com/';
     if (link.startsWith(GITHUB_URL)) {
         return link.substring(GITHUB_URL.length);

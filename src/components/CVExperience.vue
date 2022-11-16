@@ -1,4 +1,4 @@
-<script type="ts" setup>
+<script setup lang="ts" >
 import PhoneLocatorProExp2012 from '@/assets/experiences/2012-plpro.md';
 import TrueflavaExp2011 from '@/assets/experiences/2011-trueflava.md';
 import CoelisExp2014 from '@/assets/experiences/2014-coelis.md';
@@ -141,80 +141,82 @@ let experiences = [
 </template>
 
 <style lang="scss" scoped>
-    $companyLogoSize: 70px;
-    div.experiences {
-        display: flex;
-        flex-direction: column;
-        row-gap: 80px;
-        div.company {
-            display: grid;
-            grid-template-columns: $companyLogoSize 1fr;
-            grid-auto-rows: minmax(100px, auto);
-            column-gap: 40px;
+$companyLogoSize: 70px;
+div.experiences {
+    display: flex;
+    flex-direction: column;
+    row-gap: 80px;
+    div.company {
+        display: grid;
+        grid-template-columns: $companyLogoSize 1fr;
+        grid-auto-rows: minmax(100px, auto);
+        column-gap: 40px;
+        page-break-before: avoid;
+        break-before: avoid;
+
+        div.company-name {
+            font-size: 18px;
+        }
+
+        img.company-logo {
+            width: $companyLogoSize;
+            height: $companyLogoSize;
+            background-color: #FFF;
+            object-fit: contain;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        div.line {
+            margin-left: auto;
+            margin-right: auto;
+            background-color: var(--color-position-line);
+            width: 2px;
+            height: auto;
+        }
+
+        div.experience-top {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: $companyLogoSize;
 
             div.company-name {
-                font-size: 18px;
+                font-weight: bold;
             }
 
-            img.company-logo {
-                width: $companyLogoSize;
-                height: $companyLogoSize;
-                background-color: #FFF;
-                object-fit: contain;
-                padding: 5px;
-                border-radius: 5px;
+            div.location {
+                font-size: 14px;
+                color: var(--color-text-soft);
             }
+        }
 
-            div.line {
-                margin-left: auto;
-                margin-right: auto;
-                background-color: var(--color-position-line);
-                width: 2px;
-                height: auto;
-            }
-
-            div.experience-top {
+        div.experience-desc {
+            div.positions {
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
-                height: $companyLogoSize;
+                row-gap: 3em;
+                div.position {
+                    div.title {
+                        font-weight: bold;
+                        font-size: 18px;
+                    }
 
-                div.company-name {
-                    font-weight: bold;
-                }
+                    div.from-to {
+                        display: flex;
+                        flex-direction: row;
+                        column-gap: 5px;
+                        color: var(--color-text-soft);
+                        font-size: 0.90rem;
+                    }
 
-                div.location {
-                    font-size: 14px;
-                    color: var(--color-text-soft);
-                }
-            }
-
-            div.experience-desc {
-
-                div.positions {
-                    display: flex;
-                    flex-direction: column;
-                    row-gap: 3em;
-                    div.position {
-                        div.title {
-                            font-weight: bold;
-                            font-size: 18px;
-                        }
-
-                        div.from-to {
-                            display: flex;
-                            flex-direction: row;
-                            column-gap: 5px;
-                            color: var(--color-text-soft);
-                            font-size: 0.90rem;
-                        }
-
-                        div.description{
-                            margin-top: 2em;
-                        }
+                    div.description{
+                        margin-top: 2em;
+                        page-break-after: auto;
                     }
                 }
             }
         }
     }
+}
 </style>

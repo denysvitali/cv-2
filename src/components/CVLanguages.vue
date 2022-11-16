@@ -1,6 +1,4 @@
-<script type="ts" setup>
-import { marked } from 'marked';
-
+<script setup lang="ts" >
 let languages = {
     'it': {
         'icon': '🇮🇹',
