@@ -62,56 +62,75 @@ let contactInfo : ContactMap = {
 </template>
 
 <style lang="scss" scoped>
-    header {
-        display: flex;
-        justify-content: space-around;
+header {
+    display: flex;
+    justify-content: space-around;
 
-        img.profile-picture {
-            $size: 200px;
-            width: $size;
-            height: $size;
-            object-fit: cover;
-            border-radius: $size;
-            box-shadow: 0px 3px 24px 3px var(--color-shadow);
+    img.profile-picture {
+        $size: 200px;
+        width: $size;
+        height: $size;
+        object-fit: cover;
+        border-radius: $size;
+        box-shadow: 0px 3px 24px 3px var(--color-shadow);
+    }
+
+    div.contact-info {
+        display: flex;
+        flex-direction: column;
+        min-width: 300px;
+        row-gap: 12px;
+
+        div.my-name {
+            font-size: 48px;
+            font-weight: 700;
+            width: 100%;
+            text-align: center;
         }
 
-        div.contact-info {
-            display: flex;
-            flex-direction: column;
-            min-width: 300px;
-            row-gap: 12px;
+        div.basic-info-grid, div.contact-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 16px;
+            font-size: 14px;
 
-            div.my-name {
-                font-size: 48px;
-                font-weight: 700;
-                width: 100%;
-                text-align: center;
-            }
+            div.info-element {
+                display: flex;
+                flex-direction: row;
+                overflow: hidden;
+                column-gap: 8px;
+                height: 24px;
+                line-height: 20px;
 
-            div.basic-info-grid, div.contact-info-grid {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                column-gap: 16px;
-                font-size: 14px;
-
-                div.info-element {
-                    display: flex;
-                    flex-direction: row;
-                    column-gap: 8px;
+                div.icon {
                     height: 24px;
-                    line-height: 20px;
+                    font-size: 18px;
+                    width: 24px;
+                }
 
-                    div.icon {
-                        height: 24px;
-                        font-size: 18px;
-                        width: 24px;
-                    }
-
-                    div.text {
-                        font-weight: 600;
-                    }
+                div.text {
+                    font-weight: 600;
                 }
             }
         }
     }
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        div.contact-info {
+            min-width: 80px;
+
+            div.basic-info-grid, div.contact-info-grid {
+                grid-template-columns: 1fr;
+                align-items: center;
+                column-gap: 8px;
+            }
+        }
+    }
+}
 </style>

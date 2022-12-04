@@ -75,84 +75,99 @@ let education = [
 </template>
 
 <style lang="scss" scoped>
-    $companyLogoSize: 70px;
-    div.education-list {
-        display: flex;
-        flex-direction: column;
-        row-gap: 80px;
-        div.school {
-            display: grid;
-            grid-template-columns: $companyLogoSize 1fr;
-            grid-auto-rows: minmax(100px, auto);
-            column-gap: 40px;
+$companyLogoSize: 70px;
+div.education-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 80px;
+    div.school {
+        display: grid;
+        grid-template-columns: $companyLogoSize 1fr;
+        grid-auto-rows: minmax(100px, auto);
+        column-gap: 40px;
+
+        div.school-name {
+            font-size: 18px;
+        }
+
+        .school-logo {
+            background-color: #FFF;
+            color: #000;
+            object-fit: contain;
+            padding: 5px;
+            width: $companyLogoSize;
+            height: $companyLogoSize;
+            object-fit: contain;
+            border-radius: 5px;
+            font-size: $companyLogoSize * 0.6;
+            text-align: center;
+        }
+
+        div.line {
+            margin-left: auto;
+            margin-right: auto;
+            background-color: var(--color-position-line);
+            width: 2px;
+            height: auto;
+        }
+
+        div.school-top {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: $companyLogoSize;
 
             div.school-name {
-                font-size: 18px;
+                font-weight: bold;
             }
 
-            .school-logo {
-                background-color: #FFF;
-                color: #000;
-                object-fit: contain;
-                padding: 5px;
-                width: $companyLogoSize;
-                height: $companyLogoSize;
-                object-fit: contain;
-                border-radius: 5px;
-                font-size: $companyLogoSize * 0.6;
-                text-align: center;
+            div.location {
+                font-size: 14px;
+                color: var(--color-text-soft);
             }
+        }
 
-            div.line {
-                margin-left: auto;
-                margin-right: auto;
-                background-color: var(--color-position-line);
-                width: 2px;
-                height: auto;
-            }
+        div.school-desc {
 
-            div.school-top {
+            div.titles {
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
-                height: $companyLogoSize;
-
-                div.school-name {
-                    font-weight: bold;
-                }
-
-                div.location {
-                    font-size: 14px;
-                    color: var(--color-text-soft);
-                }
-            }
-
-            div.school-desc {
-
-                div.titles {
-                    display: flex;
-                    flex-direction: column;
-                    row-gap: 3em;
+                row-gap: 3em;
+                div.title {
                     div.title {
-                        div.title {
-                            font-weight: bold;
-                            font-size: 18px;
-                        }
+                        font-weight: bold;
+                        font-size: 18px;
+                    }
 
-                        div.from-to {
-                            display: flex;
-                            flex-direction: row;
-                            column-gap: 5px;
-                            color: var(--color-text-soft);
-                            font-size: 0.90rem;
-                        }
+                    div.from-to {
+                        display: flex;
+                        flex-direction: row;
+                        column-gap: 5px;
+                        color: var(--color-text-soft);
+                        font-size: 0.90rem;
+                    }
 
-                        div.description{
-                            margin-top: 2em;
-                        }
+                    div.description{
+                        margin-top: 2em;
                     }
                 }
             }
         }
     }
+}
+
+@media screen and (max-width: 600px) {
+    $logoSize: 50px;
+    div.education-list {
+        div.school {
+            grid-template-columns: $logoSize 1fr;
+            column-gap: 20px;
+            .school-logo {
+                font-size: $logoSize/2;
+                width: $logoSize;
+                height: $logoSize;
+            }
+        }
+    }
+}
 </style>

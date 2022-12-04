@@ -219,4 +219,18 @@ div.experiences {
         }
     }
 }
+
+@media screen and (max-width: 600px) {
+    $logoSize: 50px;
+    div.experiences {
+        div.company {
+            grid-template-columns: $logoSize 1fr;
+            column-gap: 20px;
+            img.company-logo {
+                width: $logoSize;
+                height: $logoSize;
+            }
+        }
+    }
+}
 </style>
