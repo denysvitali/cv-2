@@ -2,7 +2,7 @@
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 let basicInfo = {
-    'home': {'icon': '🏠', 'value': 'Zurich, Switzerland'},
+    'home': {'icon': '🏠', 'value': 'Schaffhausen, Switzerland'},
     'phone': {'icon': '📞', 'value': '+41 79 366 43 60'},
     'birthday': {'icon': '🎂', 'value': 'September 29, 1996'},
     'citizenship': {'icon': '🇨🇭', value: 'Swiss Citizen'}
