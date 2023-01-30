@@ -16,7 +16,7 @@ let experiences = [
         icon: 'swisscom.png',
         positions: [
             {
-                title: 'Data, Analytics & AI Engineer (Software Engineer and DevOps Engineer)',
+                title: 'Software Engineer / DevOps Engineer (Data, Analytics & AI)',
                 from: 'March 2021',
                 to: 'Present',
                 description: marked.parse(SwisscomExp2021)
