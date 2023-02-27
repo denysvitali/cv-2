@@ -59,7 +59,7 @@ function formatLink(link: string): string {
                             <img class="tech-icon" 
                                 v-for="tech in project.tech"
                                 :alt="tech"
-                                :src="'/logos/' + tech + '.svg'"
+                                :src="'/tech/' + tech + '.svg'"
                             >
                         </div>
                     </div>

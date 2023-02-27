@@ -16,16 +16,18 @@ let experiences = [
         icon: 'swisscom.png',
         positions: [
             {
-                title: 'Software Engineer / DevOps Engineer (Data, Analytics & AI)',
+                title: 'DevOps Engineer / Software Engineer',
                 from: 'March 2021',
                 to: 'Present',
-                description: marked.parse(SwisscomExp2021)
+                description: marked.parse(SwisscomExp2021),
+                technologies: ["go", "python", "kotlin", "java", "vue", "react", "kubernetes", "linux", "aws", "postgres", "mongodb", "argocd", "waypoint", "jenkins", "ansible", "haproxy", "redis", "kafka", "otel", "prometheus", "grafana"]
             },
             {
                 title: 'DevOps Engineer',
                 from: 'March 2020',
                 to: 'Feb 2021',
-                description: marked.parse(SwisscomExp2020)
+                description: marked.parse(SwisscomExp2020),
+                technologies: ["go", "python", "java", "kubernetes", "k3s", "linux", "ansible", "postgres", "mssql", "oracle", "jenkins", "angular", "graphql", "prometheus", "grafana"]
             }
         ]
     },
@@ -39,7 +41,8 @@ let experiences = [
                 title: 'DevOps / Backend Engineer',
                 from: 'Sep 2019',
                 to: 'Feb 2020',
-                description: marked.parse(NanosExp2019)
+                description: marked.parse(NanosExp2019),
+                technologies: ["go", "nodejs", "react", "kubernetes", "gcp", "digitalocean"]
             }
         ]
     },
@@ -52,7 +55,8 @@ let experiences = [
                 title: 'Software Engieeer',
                 from: 'Jul 2018',
                 to: 'Dec 2018',
-                description: marked.parse(SyndeckExp2018)
+                description: marked.parse(SyndeckExp2018),
+                technologies: ["go", "nodejs", "bluetooth", "vue"]
             }
         ]
     },
@@ -66,7 +70,8 @@ let experiences = [
                 title: 'Head of IT Department / Co-Founder',
                 from: 'Nov 2014',
                 to: 'Oct 2017',
-                description: marked.parse(CoelisExp2014)
+                description: marked.parse(CoelisExp2014),
+                technologies: ["php", "c-sharp", "js", "linux", "gitlab"]
             }
         ]
     },
@@ -80,7 +85,8 @@ let experiences = [
                 title: 'Web Developer',
                 from: 'Feb 2011',
                 to: 'Feb 2015',
-                description: marked.parse(TrueflavaExp2011)
+                description: marked.parse(TrueflavaExp2011),
+                technologies: ["php", "js"]
             }
         ]
     },
@@ -93,7 +99,8 @@ let experiences = [
                 title: 'Web Developer',
                 from: 'Nov 2012',
                 to: 'Feb 2014',
-                description: marked.parse(PhoneLocatorProExp2012)
+                description: marked.parse(PhoneLocatorProExp2012),
+                technologies: ["php", "js"]
             }
         ]
     },
@@ -131,6 +138,16 @@ let experiences = [
                             </div>
 
                             <div class="description" v-html="position.description">
+                            </div>
+
+                            <div class="tech-stack-section" v-if="position.technologies">
+                            <h3>Tech Stack</h3>
+                            <div class="tech-stack">
+                                <img class="tech-entry" 
+                                :src="`/tech/${language}.svg`"
+                                :title="language"
+                                v-for="language in position.technologies"/>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -213,6 +230,31 @@ div.experiences {
                     div.description{
                         margin-top: 2em;
                         page-break-after: auto;
+                    }
+
+                    div.tech-stack {
+                        display: grid;
+                        margin-left: auto;
+                        margin-right: auto;
+                        justify-items: center;
+                        $logoSize: 60px;
+                        $countColumns: 5;
+                        $gap: 8px;
+                        $logoPadding: 8px;
+                        grid-template-columns: repeat($countColumns, $logoSize);
+                        width: $logoSize * $countColumns + $gap * ($countColumns - 1);
+                        column-gap: $gap;
+                        row-gap: $gap;
+                        margin-top: 1em;
+                        img.tech-entry {
+                            background-color: #FFF;
+                            width: $logoSize;
+                            height: $logoSize;
+                            padding: $logoPadding;
+                            border-radius: 5px;
+                            display: block;
+                            overflow: hidden;
+                        }
                     }
                 }
             }
