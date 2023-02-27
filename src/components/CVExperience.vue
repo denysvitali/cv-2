@@ -113,7 +113,7 @@ let experiences = [
         <h2>Experience</h2>
         <div class="experiences">
             <div class="company" v-for="exp in experiences">
-                <img :src="'/companies/square/' + exp.icon" class="company-logo"/>
+                <img :src="'/companies/square/' + exp.icon" class="company-logo" />
 
                 <div class="experience-top">
                     <div class="company-name">{{ exp.company }}</div>
@@ -141,13 +141,11 @@ let experiences = [
                             </div>
 
                             <div class="tech-stack-section" v-if="position.technologies">
-                            <h3>Tech Stack</h3>
-                            <div class="tech-stack">
-                                <img class="tech-entry" 
-                                :src="`/tech/${language}.svg`"
-                                :title="language"
-                                v-for="language in position.technologies"/>
-                            </div>
+                                <h3>Tech Stack</h3>
+                                <div class="tech-stack">
+                                    <img class="tech-entry" :src="`/tech/${language}.svg`" :title="language"
+                                        v-for="language in position.technologies" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -159,10 +157,12 @@ let experiences = [
 
 <style lang="scss" scoped>
 $companyLogoSize: 70px;
+
 div.experiences {
     display: flex;
     flex-direction: column;
     row-gap: 80px;
+
     div.company {
         display: grid;
         grid-template-columns: $companyLogoSize 1fr;
@@ -213,6 +213,7 @@ div.experiences {
                 display: flex;
                 flex-direction: column;
                 row-gap: 3em;
+
                 div.position {
                     div.title {
                         font-weight: bold;
@@ -227,7 +228,7 @@ div.experiences {
                         font-size: 0.90rem;
                     }
 
-                    div.description{
+                    div.description {
                         margin-top: 2em;
                         page-break-after: auto;
                     }
@@ -246,6 +247,7 @@ div.experiences {
                         column-gap: $gap;
                         row-gap: $gap;
                         margin-top: 1em;
+
                         img.tech-entry {
                             background-color: #FFF;
                             width: $logoSize;
@@ -264,15 +266,31 @@ div.experiences {
 
 @media screen and (max-width: 600px) {
     $logoSize: 50px;
+
     div.experiences {
         div.company {
             grid-template-columns: $logoSize 1fr;
             column-gap: 20px;
+
             img.company-logo {
                 width: $logoSize;
                 height: $logoSize;
             }
+
+            div.experience-desc {
+                div.positions {
+                    div.position {
+                        div.tech-stack {
+                            $logoSize: 60px;
+                            $countColumns: 3;
+                            $gap: 8px;
+                            $logoPadding: 8px;
+                            grid-template-columns: repeat($countColumns, $logoSize);
+                            width: $logoSize * $countColumns + $gap * ($countColumns - 1);
+                        }
+                    }
+                }
+            }
         }
     }
-}
-</style>
+}</style>
