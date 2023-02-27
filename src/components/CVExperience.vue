@@ -311,7 +311,7 @@ div.experiences {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 601px) {
     div.experiences {
         div.experience-desc {
             div.positions {
