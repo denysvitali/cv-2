@@ -58,7 +58,8 @@ let experiences = [
                 description: marked.parse(SyndeckExp2018),
                 technologies: ["go", "nodejs", "bluetooth", "vue"]
             }
-        ]
+        ],
+        pageBreak: true,
     },
     {
         company: 'Coelis',
@@ -88,7 +89,8 @@ let experiences = [
                 description: marked.parse(TrueflavaExp2011),
                 technologies: ["php", "js"]
             }
-        ]
+        ],
+        pageBreak: true,
     },
     {
         company: 'PhoneLocator Pro',
@@ -150,6 +152,7 @@ let experiences = [
                         </div>
                     </div>
                 </div>
+                <div v-if="exp.pageBreak" class="page-break"></div>
             </div>
         </div>
     </div>
@@ -164,6 +167,7 @@ div.experiences {
     row-gap: 80px;
 
     div.company {
+        page-break-before: auto;
         display: grid;
         grid-template-columns: $companyLogoSize 1fr;
         grid-auto-rows: minmax(100px, auto);
@@ -171,11 +175,17 @@ div.experiences {
         page-break-before: avoid;
         break-before: avoid;
 
+        div.page-break {
+            display: none;
+        }
+
+
         div.company-name {
             font-size: 18px;
         }
 
         img.company-logo {
+            page-break-inside: avoid;
             width: $companyLogoSize;
             height: $companyLogoSize;
             background-color: #FFF;
@@ -185,6 +195,7 @@ div.experiences {
         }
 
         div.line {
+            page-break-before: avoid;
             margin-left: auto;
             margin-right: auto;
             background-color: var(--color-position-line);
@@ -197,6 +208,7 @@ div.experiences {
             flex-direction: column;
             justify-content: center;
             height: $companyLogoSize;
+            page-break-after: avoid;
 
             div.company-name {
                 font-weight: bold;
@@ -209,12 +221,18 @@ div.experiences {
         }
 
         div.experience-desc {
+            page-break-before: avoid;
+            page-break-after: auto;
+
             div.positions {
+                page-break-before: avoid;
                 display: flex;
                 flex-direction: column;
                 row-gap: 3em;
 
                 div.position {
+                    page-break-before: auto;
+
                     div.title {
                         font-weight: bold;
                         font-size: 18px;
@@ -234,6 +252,7 @@ div.experiences {
                     }
 
                     div.tech-stack {
+                        page-break-inside: auto;
                         display: grid;
                         margin-left: auto;
                         margin-right: auto;
@@ -264,7 +283,19 @@ div.experiences {
     }
 }
 
-@media screen and (max-width: 600px) {
+@media print {
+    div.experiences {
+        div.company {
+            div.page-break {
+                display: block;
+                page-break-after: always;
+            }
+        }
+    }
+
+}
+
+@media (max-width: 600px) {
     $logoSize: 50px;
 
     div.experiences {
@@ -276,21 +307,26 @@ div.experiences {
                 width: $logoSize;
                 height: $logoSize;
             }
+        }
+    }
+}
 
-            div.experience-desc {
-                div.positions {
-                    div.position {
-                        div.tech-stack {
-                            $logoSize: 60px;
-                            $countColumns: 3;
-                            $gap: 8px;
-                            $logoPadding: 8px;
-                            grid-template-columns: repeat($countColumns, $logoSize);
-                            width: $logoSize * $countColumns + $gap * ($countColumns - 1);
-                        }
+@media (max-width: 400px) {
+    div.experiences {
+        div.experience-desc {
+            div.positions {
+                div.position {
+                    div.tech-stack {
+                        $logoSize: 60px;
+                        $countColumns: 3;
+                        $gap: 8px;
+                        $logoPadding: 8px;
+                        grid-template-columns: repeat($countColumns, $logoSize);
+                        width: $logoSize * $countColumns + $gap * ($countColumns - 1);
                     }
                 }
             }
         }
     }
-}</style>
+}
+</style>

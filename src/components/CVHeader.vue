@@ -2,10 +2,10 @@
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 let basicInfo = {
-    'home': {'icon': '🏠', 'value': 'Schaffhausen, Switzerland'},
-    'phone': {'icon': '📞', 'value': '+41 79 366 43 60'},
-    'birthday': {'icon': '🎂', 'value': 'September 29, 1996'},
-    'citizenship': {'icon': '🇨🇭', value: 'Swiss Citizen'}
+    'home': { 'icon': '🏠', 'value': 'Schaffhausen, Switzerland' },
+    'phone': { 'icon': '📞', 'value': '+41 79 366 43 60' },
+    'birthday': { 'icon': '🎂', 'value': 'September 29, 1996' },
+    'citizenship': { 'icon': '🇨🇭', value: 'Swiss Citizen' }
 };
 
 type ContactInfo = {
@@ -18,18 +18,18 @@ type ContactMap = {
     [id: string]: ContactInfo;
 }
 
-let contactInfo : ContactMap = {
-    'email': {'icon': 'fa-solid fa-envelope', 'value': 'denys@denv.it'},
-    'web': {'icon': 'fa-solid fa-link', 'value': 'denv.it', 'url': 'https://denv.it'},
-    'github': {'icon': 'fa-brands fa-github', value: '@denysvitali', 'url': 'https://github.com/denysvitali' },
-    'linkedin': {'icon': 'fa-brands fa-linkedin', value: 'denysvitali', 'url': 'https://www.linkedin.com/in/denysvitali/'},
-    'telegram': {'icon': 'fa-brands fa-telegram', value: '@denvit', 'url': 'https://telegram.me/denvit'},
-    'twitter': {'icon': 'fa-brands fa-twitter', value: '@DenysVitali', 'url': 'https://twitter.com/DenysVitali'}
+let contactInfo: ContactMap = {
+    'email': { 'icon': 'fa-solid fa-envelope', 'value': 'denys@denv.it' },
+    'web': { 'icon': 'fa-solid fa-link', 'value': 'denv.it', 'url': 'https://denv.it' },
+    'github': { 'icon': 'fa-brands fa-github', value: '@denysvitali', 'url': 'https://github.com/denysvitali' },
+    'linkedin': { 'icon': 'fa-brands fa-linkedin', value: 'denysvitali', 'url': 'https://www.linkedin.com/in/denysvitali/' },
+    'telegram': { 'icon': 'fa-brands fa-telegram', value: '@denvit', 'url': 'https://telegram.me/denvit' },
+    'twitter': { 'icon': 'fa-brands fa-twitter', value: '@DenysVitali', 'url': 'https://twitter.com/DenysVitali' }
 };
 </script>
 <template>
     <header>
-        <img class="profile-picture" src="/profile.jpg"/>
+        <img class="profile-picture" src="/profile.jpg" />
         <div class="contact-info">
             <div class="my-name">Denys Vitali</div>
             <div class="basic-info-grid">
@@ -39,19 +39,14 @@ let contactInfo : ContactMap = {
                 </div>
             </div>
 
-            <hr/>
+            <hr />
 
             <div class="contact-info-grid">
                 <div class="info-element" v-for="element of contactInfo">
                     <div class="icon">
-                        <font-awesome-icon :icon="element.icon"/>
+                        <font-awesome-icon :icon="element.icon" />
                     </div>
-                    <a 
-                        v-if="element.url" 
-                        :href="element.url" 
-                        target="_blank"
-                        class="text" 
-                    >
+                    <a v-if="element.url" :href="element.url" target="_blank" class="text">
                         {{ element.value }}
                     </a>
                     <div class="text" v-else>{{ element.value }}</div>
@@ -65,6 +60,7 @@ let contactInfo : ContactMap = {
 header {
     display: flex;
     justify-content: space-around;
+    align-items: center;
 
     img.profile-picture {
         $size: 200px;
@@ -88,7 +84,8 @@ header {
             text-align: center;
         }
 
-        div.basic-info-grid, div.contact-info-grid {
+        div.basic-info-grid,
+        div.contact-info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             column-gap: 16px;
@@ -116,7 +113,20 @@ header {
     }
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 700px) {
+    header {
+        img.profile-picture {
+            $size: 150px;
+            width: $size;
+            height: $size;
+            object-fit: cover;
+            border-radius: $size;
+            box-shadow: 0px 3px 24px 3px var(--color-shadow);
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
     header {
         display: flex;
         flex-direction: column;
@@ -125,7 +135,8 @@ header {
         div.contact-info {
             min-width: 80px;
 
-            div.basic-info-grid, div.contact-info-grid {
+            div.basic-info-grid,
+            div.contact-info-grid {
                 grid-template-columns: 1fr;
                 align-items: center;
                 column-gap: 8px;

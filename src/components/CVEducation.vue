@@ -156,7 +156,7 @@ div.education-list {
     }
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
     $logoSize: 50px;
     div.education-list {
         div.school {
