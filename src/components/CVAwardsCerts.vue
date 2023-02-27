@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 let certificates = [
 {
         title: "HashiCorp Core Contributor 2023",
