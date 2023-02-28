@@ -313,7 +313,8 @@ div.experiences {
 
 @media (max-width: 601px) {
     div.experiences {
-        div.experience-desc {
+    
+       div.compamy, div.experience-desc {
             div.positions {
                 div.position {
                     div.tech-stack {
