@@ -10,3 +10,6 @@ run:
 		--cap-add=SYS_ADMIN \
 		-v "$(PWD)/output:/app/output" \
 		"$(IMAGE_NAME)"
+
+push:
+	docker push "$(IMAGE_NAME)"
