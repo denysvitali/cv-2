@@ -37,10 +37,10 @@ jobs:
     needs: deploy
     container:
       image: dvitali/cv-render:latest
-    env:
-      TARGET_URL: "https://cv.denv.it"
+      env:
+        TARGET_URL: "https://cv.denv.it"
     steps:
-    - run: npm install
+    - run: cd /app && npm install
     - run: /app/entrypoint.sh
     - name: Archive CV PDF
       uses: actions/upload-artifact@v3
