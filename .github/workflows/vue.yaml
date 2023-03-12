@@ -42,6 +42,7 @@ jobs:
         PUPPETEER_ARGS: --no-sandbox
     steps:
     - run: cd /app && npm install
+    - run: mkdir /app/output
     - run: HOME=/home/node /app/entrypoint.sh
     - name: Archive CV PDF
       uses: actions/upload-artifact@v3
