@@ -40,6 +40,7 @@ jobs:
     env:
       TARGET_URL: "https://cv.denv.it"
     steps:
+    - run: npm install
     - run: /app/entrypoint.sh
     - name: Archive CV PDF
       uses: actions/upload-artifact@v3
