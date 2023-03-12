@@ -39,6 +39,7 @@ jobs:
       image: dvitali/cv-render:latest
       env:
         TARGET_URL: "https://cv.denv.it"
+        HOME: /home/node
     steps:
     - run: cd /app && npm install
     - run: /app/entrypoint.sh
