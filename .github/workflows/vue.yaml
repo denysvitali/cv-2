@@ -39,10 +39,9 @@ jobs:
       image: dvitali/cv-render:latest
       env:
         TARGET_URL: "https://cv.denv.it"
-        HOME: /home/node
     steps:
     - run: cd /app && npm install
-    - run: /app/entrypoint.sh
+    - run: HOME=/home/node /app/entrypoint.sh
     - name: Archive CV PDF
       uses: actions/upload-artifact@v3
       with:
