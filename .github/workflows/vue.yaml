@@ -48,4 +48,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: cv
-        path: output/cv.pdf
+        path: /app/output/cv.pdf
