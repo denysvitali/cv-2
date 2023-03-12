@@ -59,7 +59,7 @@ let experiences = [
                 technologies: ["go", "nodejs", "bluetooth", "vue"]
             }
         ],
-        pageBreak: true,
+        pageBreak: false,
     },
     {
         company: 'Coelis',
@@ -74,7 +74,8 @@ let experiences = [
                 description: marked.parse(CoelisExp2014),
                 technologies: ["php", "c-sharp", "js", "linux", "gitlab"]
             }
-        ]
+        ],
+        pageBreak: true,
     },
     {
         company: 'TRUE FLAVA',
@@ -90,7 +91,7 @@ let experiences = [
                 technologies: ["php", "js"]
             }
         ],
-        pageBreak: true,
+        pageBreak: false,
     },
     {
         company: 'PhoneLocator Pro',
@@ -143,7 +144,7 @@ let experiences = [
                             </div>
 
                             <div class="tech-stack-section" v-if="position.technologies">
-                                <h3>Tech Stack</h3>
+                                <h4>Tech Stack</h4>
                                 <div class="tech-stack">
                                     <img class="tech-entry" :src="`/tech/${language}.svg`" :title="language"
                                         v-for="language in position.technologies" />
@@ -167,13 +168,10 @@ div.experiences {
     row-gap: 80px;
 
     div.company {
-        page-break-before: auto;
         display: grid;
         grid-template-columns: $companyLogoSize 1fr;
         grid-auto-rows: minmax(100px, auto);
         column-gap: 40px;
-        page-break-before: avoid;
-        break-before: avoid;
 
         div.page-break {
             display: none;
@@ -181,7 +179,7 @@ div.experiences {
 
 
         div.company-name {
-            font-size: 18px;
+            font-size: 1.2em;
         }
 
         img.company-logo {
@@ -196,6 +194,7 @@ div.experiences {
 
         div.line {
             page-break-before: avoid;
+            page-break-after: avoid;
             margin-left: auto;
             margin-right: auto;
             background-color: var(--color-position-line);
@@ -208,14 +207,14 @@ div.experiences {
             flex-direction: column;
             justify-content: center;
             height: $companyLogoSize;
-            page-break-after: avoid;
+            page-break-before: avoid;
 
             div.company-name {
                 font-weight: bold;
             }
 
             div.location {
-                font-size: 14px;
+                font-size: 1em;
                 color: var(--color-text-soft);
             }
         }
@@ -235,7 +234,7 @@ div.experiences {
 
                     div.title {
                         font-weight: bold;
-                        font-size: 18px;
+                        font-size: 1em;
                     }
 
                     div.from-to {
@@ -243,7 +242,7 @@ div.experiences {
                         flex-direction: row;
                         column-gap: 5px;
                         color: var(--color-text-soft);
-                        font-size: 0.90rem;
+                        font-size: 0.90em;
                     }
 
                     div.description {
@@ -284,18 +283,63 @@ div.experiences {
 }
 
 @media print {
+    * {
+    }
+
+    $companyLogoSize: 50px;
+
     div.experiences {
+        row-gap: 1em;
         div.company {
+            grid-template-columns: $companyLogoSize 1fr;
+            grid-auto-rows: auto;
+            div.experience-top {
+                height: $companyLogoSize;
+                margin-bottom: 1em;
+            }
+
             div.page-break {
                 display: block;
                 page-break-after: always;
+            }
+
+            img.company-logo {
+                width: $companyLogoSize;
+                height: $companyLogoSize;
+            }
+
+            div.experience-desc {
+                div.positions {
+                    div.position {
+
+                        div.description {
+                            margin-top: 1em;
+                        }
+                        div.tech-stack {
+                            $logoSize: 35px;
+                            $countColumns: 8;
+                            $gap: 8px;
+                            $logoPadding: 4px;
+                            grid-template-columns: repeat($countColumns, $logoSize);
+                            width: $logoSize * $countColumns + $gap * ($countColumns - 1);
+                            column-gap: $gap;
+                            row-gap: $gap;
+
+                            img.tech-entry {
+                                width: $logoSize;
+                                height: $logoSize;
+                                padding: $logoPadding;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
 
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
     $logoSize: 50px;
 
     div.experiences {
@@ -308,13 +352,8 @@ div.experiences {
                 height: $logoSize;
             }
         }
-    }
-}
 
-@media (max-width: 601px) {
-    div.experiences {
-
-       div.company div.experience-desc {
+        div.company div.experience-desc {
             div.positions {
                 div.position {
                     div.tech-stack {
@@ -329,5 +368,4 @@ div.experiences {
             }
         }
     }
-}
-</style>
+}</style>

@@ -19,12 +19,10 @@ type ContactMap = {
 }
 
 let contactInfo: ContactMap = {
-    'email': { 'icon': 'fa-solid fa-envelope', 'value': 'denys@denv.it' },
+    'email': { 'icon': 'fa-solid fa-envelope', 'value': 'denys@denv.it', url: 'mailto:denys@denv.it' },
     'web': { 'icon': 'fa-solid fa-link', 'value': 'denv.it', 'url': 'https://denv.it' },
     'github': { 'icon': 'fa-brands fa-github', value: '@denysvitali', 'url': 'https://github.com/denysvitali' },
     'linkedin': { 'icon': 'fa-brands fa-linkedin', value: 'denysvitali', 'url': 'https://www.linkedin.com/in/denysvitali/' },
-    'telegram': { 'icon': 'fa-brands fa-telegram', value: '@denvit', 'url': 'https://telegram.me/denvit' },
-    'twitter': { 'icon': 'fa-brands fa-twitter', value: '@DenysVitali', 'url': 'https://twitter.com/DenysVitali' }
 };
 </script>
 <template>
@@ -75,10 +73,10 @@ header {
         display: flex;
         flex-direction: column;
         min-width: 300px;
-        row-gap: 12px;
+        row-gap: 0.5em;
 
         div.my-name {
-            font-size: 48px;
+            font-size: 3em;
             font-weight: 700;
             width: 100%;
             text-align: center;
@@ -88,8 +86,8 @@ header {
         div.contact-info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            column-gap: 16px;
-            font-size: 14px;
+            column-gap: 1em;
+            font-size: 1em;
 
             div.info-element {
                 display: flex;
@@ -100,9 +98,9 @@ header {
                 line-height: 20px;
 
                 div.icon {
-                    height: 24px;
-                    font-size: 18px;
-                    width: 24px;
+                    height: 1em;
+                    font-size: 1em;
+                    width: 1em;
                 }
 
                 div.text {

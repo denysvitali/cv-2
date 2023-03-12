@@ -20,6 +20,7 @@ import CVProjects from '@/components/CVProjects.vue';
       <CVExperience/>
       <CVEducation/>
       <CVAwardsCerts/>
+      <div class="page-break"></div>
       <CVLanguages/>
       <CVProjects/>
     </div>
@@ -29,6 +30,10 @@ import CVProjects from '@/components/CVProjects.vue';
 <style scoped>
   .cv-header {
     margin-bottom: 2em;
+  }
+
+  div.page-break {
+    page-break-after: always;
   }
 
   div.sections {

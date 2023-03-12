@@ -88,7 +88,7 @@ div.projects {
 
                 div.name {
                     font-weight: bold;
-                    font-size: 18px;
+                    font-size: 1.2em;
                 }
 
                 div.tech-stack {

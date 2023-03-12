@@ -75,19 +75,19 @@ let education = [
 </template>
 
 <style lang="scss" scoped>
-$companyLogoSize: 70px;
+$schoolLogoSize: 70px;
 div.education-list {
     display: flex;
     flex-direction: column;
     row-gap: 80px;
     div.school {
         display: grid;
-        grid-template-columns: $companyLogoSize 1fr;
-        grid-auto-rows: minmax(100px, auto);
+        grid-template-columns: $schoolLogoSize 1fr;
+        grid-auto-rows: auto;
         column-gap: 40px;
 
         div.school-name {
-            font-size: 18px;
+            font-size: 1em;
         }
 
         .school-logo {
@@ -95,11 +95,11 @@ div.education-list {
             color: #000;
             object-fit: contain;
             padding: 5px;
-            width: $companyLogoSize;
-            height: $companyLogoSize;
+            width: $schoolLogoSize;
+            height: $schoolLogoSize;
             object-fit: contain;
             border-radius: 5px;
-            font-size: $companyLogoSize * 0.6;
+            font-size: $schoolLogoSize * 0.6;
             text-align: center;
         }
 
@@ -115,14 +115,15 @@ div.education-list {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            height: $companyLogoSize;
+            height: $schoolLogoSize;
 
             div.school-name {
                 font-weight: bold;
+                font-size: 1.2em;
             }
 
             div.location {
-                font-size: 14px;
+                font-size: 1em;
                 color: var(--color-text-soft);
             }
         }
@@ -132,11 +133,11 @@ div.education-list {
             div.titles {
                 display: flex;
                 flex-direction: column;
-                row-gap: 3em;
+                row-gap: 1em;
                 div.title {
                     div.title {
                         font-weight: bold;
-                        font-size: 18px;
+                        font-size: 1em;
                     }
 
                     div.from-to {
@@ -144,7 +145,7 @@ div.education-list {
                         flex-direction: row;
                         column-gap: 5px;
                         color: var(--color-text-soft);
-                        font-size: 0.90rem;
+                        font-size: 0.90em;
                     }
 
                     div.description{
@@ -156,14 +157,41 @@ div.education-list {
     }
 }
 
-@media (max-width: 600px) {
+@media print {
+    $schoolLogoSize: 50px;
+    div.education-list {
+        row-gap: 1em;
+        div.school {
+            grid-template-columns: $schoolLogoSize 1fr;
+            div.school-top {
+                height: $schoolLogoSize;
+            }
+            .school-logo {
+                width: $schoolLogoSize;
+                height: $schoolLogoSize;
+                font-size: $schoolLogoSize * 0.6;
+            }
+            div.school-desc {
+                div.titles {
+                    div.title {
+                        div.description {
+                            margin-top: 1em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
     $logoSize: 50px;
     div.education-list {
         div.school {
             grid-template-columns: $logoSize 1fr;
             column-gap: 20px;
             .school-logo {
-                font-size: $logoSize/2;
+                font-size: calc($logoSize/2);
                 width: $logoSize;
                 height: $logoSize;
             }

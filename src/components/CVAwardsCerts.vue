@@ -25,9 +25,6 @@ let certificates = [
 </template>
 
 <style lang="scss" scoped>
-h2 {
-    page-break-before: always;
-}
 div.certifications {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -38,6 +35,15 @@ div.certifications {
         width: 150px;
         img {
             width: 100%;
+        }
+    }
+}
+
+@media print {
+    div.certifications {
+        div.certificate {
+            width: 100px;
+            max-height: 100px;
         }
     }
 }

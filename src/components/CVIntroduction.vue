@@ -10,7 +10,7 @@ import { marked } from 'marked';
 
         <div class="notice-section">
         <h3>Note</h3>
-        <p>This CV can also be seen on <a href="https://cv.denv.it">https://cv.denv.it</a></p>
+        <p>This CV is also available as a web page: <a href="https://cv.denv.it">https://cv.denv.it</a></p>
         </div>
     </div>
 </template>
