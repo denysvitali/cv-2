@@ -37,15 +37,35 @@ let certificates: Certs[] = [
 <style lang="scss" scoped>
 div.certifications {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 150px);
   column-gap: 20px;
   row-gap: 10px;
+  max-width: 100%;
+  overflow: hidden;
 
   div.certificate {
     width: 150px;
     img {
       width: 100%;
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  div.certifications {
+    grid-template-columns: repeat(3, 150px);
+  }
+}
+
+@media screen and (max-width: 570px) {
+  div.certifications {
+    grid-template-columns: repeat(2, 150px);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  div.certifications {
+    grid-template-columns: repeat(1, 150px);
   }
 }
 
