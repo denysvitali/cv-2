@@ -1,44 +1,42 @@
 <script setup lang="ts">
-import CVHeader from '@/components/CVHeader.vue';
-import CVIntroduction from '@/components/CVIntroduction.vue';
-import CVExperience from '@/components/CVExperience.vue';
-import CVEducation from '@/components/CVEducation.vue';
-import CVAwardsCerts from '@/components/CVAwardsCerts.vue';
+import CVHeader from "@/components/CVHeader.vue";
+import CVIntroduction from "@/components/CVIntroduction.vue";
+import CVExperience from "@/components/CVExperience.vue";
+import CVEducation from "@/components/CVEducation.vue";
+import CVAwardsCerts from "@/components/CVAwardsCerts.vue";
 
-import CVLanguages from '@/components/CVLanguages.vue';
-import CVProjects from '@/components/CVProjects.vue';
-
-
+import CVLanguages from "@/components/CVLanguages.vue";
+import CVProjects from "@/components/CVProjects.vue";
 </script>
 
 <template>
   <main>
-    <CVHeader class="cv-header"/>
-    
+    <CVHeader class="cv-header" />
+
     <div class="sections">
-      <CVIntroduction/>
-      <CVExperience/>
-      <CVEducation/>
-      <CVAwardsCerts/>
+      <CVIntroduction />
+      <CVExperience />
+      <CVEducation />
+      <CVAwardsCerts />
       <div class="page-break"></div>
-      <CVLanguages/>
-      <CVProjects/>
+      <CVLanguages />
+      <CVProjects />
     </div>
   </main>
 </template>
 
 <style scoped>
-  .cv-header {
-    margin-bottom: 2em;
-  }
+.cv-header {
+  margin-bottom: 2em;
+}
 
-  div.page-break {
-    page-break-after: always;
-  }
+div.page-break {
+  page-break-after: always;
+}
 
-  div.sections {
-    display: flex;
-    flex-direction: column;
-    row-gap: 40px;
-  }
+div.sections {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
 </style>

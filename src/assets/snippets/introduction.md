@@ -1,3 +1,3 @@
-I am a Software Engineer / DevOps Engineer and perfectionist who loves to work with and for Open Source technologies. 
-I love to solve problems with my expertise and know-how, always putting the maximum effort in what I do. 
-Furthermore, I am always open to learn new things to improve my skill-set.
+I am a Software Engineer and DevOps Engineer with a background in security.
+  
+I am passionate about software development, cloud platforms, and security, with a deep commitment to excellence. I have a particular affinity for working with and contributing to open-source technologies. Problem-solving is at the core of my work, and I consistently apply my expertise and knowledge to deliver high-quality results. I am dedicated to continuous learning and always eager to expand my skill set.
