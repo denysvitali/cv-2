@@ -22,13 +22,6 @@ dev-exec:
 		"$(CONTAINER_NAME)" \
 		bash
 
-render-pdf:
-	docker build \
-		-f "Dockerfile.render" \
-		-t cv-render \
-		.
-	docker run --rm "cv-render" \ phantomjs /app/phantom.js
-
 docker-build:
 	docker build \
 		-t "$(IMAGE_REF)" \
