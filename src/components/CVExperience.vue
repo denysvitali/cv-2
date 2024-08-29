@@ -54,6 +54,7 @@ let experiences: Experience[] = [
         ],
       },
     ],
+    pageBreak: true,
   },
   {
     company: "Swisscom",
@@ -114,6 +115,7 @@ let experiences: Experience[] = [
         ],
       },
     ],
+    pageBreak: true,
   },
   {
     company: "Nanos",
