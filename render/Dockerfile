@@ -1,5 +1,5 @@
 # Specify the base image
-FROM node:19-buster
+FROM node:lts
 RUN apt-get update && apt-get install -y chromium && rm -rf /var/lib/apt/lists/*
 RUN apt-get update && apt-get install fonts-noto-color-emoji && rm -rf /var/lib/apt/lists/*
 

@@ -45,7 +45,7 @@ jobs:
     - run: mkdir /app/output
     - run: cd /app && HOME=/home/node ./entrypoint.sh
     - name: Archive CV PDF
-      uses: actions/upload-artifact@v4.3.6
+      uses: actions/upload-artifact@v3
       with:
         name: cv
         path: /app/output/cv.pdf
