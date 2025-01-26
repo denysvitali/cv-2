@@ -7,6 +7,7 @@ import NanosExp2019 from "@/assets/experiences/2019-nanos.md";
 import SwisscomExp2020 from "@/assets/experiences/2020-scs.md";
 import SwisscomExp2021 from "@/assets/experiences/2021-scs.md";
 import NianticExp2023 from "@/assets/experiences/2023-niantic.md";
+import OpenSystems2025 from "@/assets/experiences/2025-opensystems.md";
 import { marked } from "marked";
 
 type Position = {
@@ -28,6 +29,32 @@ type Experience = {
 
 let experiences: Experience[] = [
   {
+    company: "Open Systems",
+    url: "https://open-systems.com",
+    icon: "open-systems.svg",
+    location: "Zurich, Switzerland",
+    positions: [
+      {
+        title: "Senior Platform Observability Engineer",
+        from: "January 2025",
+        to: "Today",
+        description: marked.parse(OpenSystems2025),
+        technologies: [
+          "go",
+          "grafana",
+          "tempo",
+          "loki",
+          "github",
+          "otel",
+          "prometheus",
+          "thanos",
+          "azure",
+          "kubernetes",
+        ],
+      },
+    ],
+  },
+  {
     company: "Niantic",
     url: "https://nianticlabs.com",
     icon: "niantic.svg",
@@ -36,7 +63,7 @@ let experiences: Experience[] = [
       {
         title: "Security Engineer, Production",
         from: "November 2023",
-        to: "Today",
+        to: "December 2024",
         description: marked.parse(NianticExp2023),
         technologies: [
           "gcp",
