@@ -1,6 +1,6 @@
 # Denys Vitali's CV (Vue)
 
-This is my CV written in Vue. It supercedes the [previous one](https://github.com/denysvitali/cv)
+This is my CV written in Vue. It supersedes the [previous one](https://github.com/denysvitali/cv)
 (which was written in LaTeX) and includes the following features:
 
 - Dark Mode
