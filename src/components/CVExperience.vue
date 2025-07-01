@@ -53,6 +53,7 @@ let experiences: Experience[] = [
         ],
       },
     ],
+    pageBreak: true,
   },
   {
     company: "Niantic",

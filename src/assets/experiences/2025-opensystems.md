@@ -1,0 +1,3 @@
+Part of the Observability team at Open Systems - a team responsible for gathering telemetry data from 10k+ devices spread across the globe and providing an observability platform for the entire company and our customers.  
+  
+Contribution to multiple open-source projects such as [prometheus-operator](https://github.com/prometheus-operator/prometheus-operator/), [Jaeger](https://github.com/jaegertracing/jaeger), [Grafana Tempo](https://github.com/grafana/tempo/), [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector), [AlertManager](https://github.com/prometheus/alertmanager), [Thanos](https://github.com/thanos-io/thanos/).

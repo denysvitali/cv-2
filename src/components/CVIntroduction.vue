@@ -25,4 +25,8 @@ import { marked } from "marked";
     display: none;
   }
 }
+
+div.notice-section {
+  margin-top: 2em;
+}
 </style>

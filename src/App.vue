@@ -8,6 +8,7 @@ import CVAwardsCerts from "@/components/CVAwardsCerts.vue";
 import CVLanguages from "@/components/CVLanguages.vue";
 import CVProjects from "@/components/CVProjects.vue";
 import CVAIPromptInjection from "@/components/CVAIPromptInjection.vue";
+import CVPublicSpeaking from "./components/CVPublicSpeaking.vue";
 </script>
 
 <template>
@@ -19,8 +20,8 @@ import CVAIPromptInjection from "@/components/CVAIPromptInjection.vue";
       <CVExperience />
       <CVEducation />
       <CVAwardsCerts />
-      <div class="page-break"></div>
       <CVLanguages />
+      <CVPublicSpeaking />
       <CVProjects />
       <CVAIPromptInjection />
     </div>
