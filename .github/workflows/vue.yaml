@@ -46,7 +46,7 @@ jobs:
           -v ${{ github.workspace }}:/workspace \
           --user root \
           dvitali/cv-render:latest \
-          /bin/sh -c "cp -r /app /tmp/app && cd /tmp/app && npm install && npx puppeteer browsers install chrome && mkdir -p output && HOME=/tmp ./entrypoint.sh && cp output/cv.pdf /workspace/ && chown $(stat -c '%u:%g' /workspace) /workspace/cv.pdf"
+          /bin/sh -c "cp -r /app /tmp/app && cd /tmp/app && npm install && npx puppeteer browsers install chrome && mkdir -p output && HOME=/tmp ./entrypoint.sh && cp output/cv.pdf /workspace/ && chown 1001:121 /workspace/cv.pdf"
     - name: Archive CV PDF
       uses: actions/upload-artifact@v4
       with:
