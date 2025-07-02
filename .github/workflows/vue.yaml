@@ -35,17 +35,18 @@ jobs:
   pdf:
     runs-on: ubuntu-latest
     needs: deploy
-    container:
-      image: dvitali/cv-render:latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Generate PDF
+      uses: docker://dvitali/cv-render:latest
       env:
         TARGET_URL: "https://cv.denv.it"
         PUPPETEER_ARGS: --no-sandbox
-    steps:
-    - run: cd /app && npm install
-    - run: mkdir /app/output
-    - run: cd /app && HOME=/home/node ./entrypoint.sh
+      with:
+        entrypoint: /bin/sh
+        args: -c "cd /app && npm install && mkdir -p output && HOME=/home/node ./entrypoint.sh && cp output/cv.pdf /github/workspace/"
     - name: Archive CV PDF
       uses: actions/upload-artifact@v4
       with:
         name: cv
-        path: /app/output/cv.pdf
+        path: cv.pdf
