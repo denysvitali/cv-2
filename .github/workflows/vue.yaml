@@ -42,6 +42,7 @@ jobs:
         docker run --rm \
           -e TARGET_URL="https://cv.denv.it" \
           -e PUPPETEER_ARGS="--no-sandbox" \
+          -e PUPPETEER_CACHE_DIR="/home/node/.cache/puppeteer" \
           -v ${{ github.workspace }}:/workspace \
           dvitali/cv-render:latest \
           /bin/sh -c "cp -r /app /tmp/app && cd /tmp/app && npm install && npx puppeteer browsers install chrome && mkdir -p output && HOME=/tmp ./entrypoint.sh && cp output/cv.pdf /workspace/"
