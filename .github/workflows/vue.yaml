@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Use Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: 18.x
         cache: 'npm'
@@ -30,7 +30,7 @@ jobs:
       id-token: write
     steps:
     - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v4.0.5
+      uses: actions/deploy-pages@v4
   
   pdf:
     runs-on: ubuntu-latest
@@ -45,7 +45,7 @@ jobs:
     - run: mkdir /app/output
     - run: cd /app && HOME=/home/node ./entrypoint.sh
     - name: Archive CV PDF
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: cv
         path: /app/output/cv.pdf
