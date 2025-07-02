@@ -38,13 +38,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Generate PDF
-      uses: docker://dvitali/cv-render:latest
-      env:
-        TARGET_URL: "https://cv.denv.it"
-        PUPPETEER_ARGS: --no-sandbox
-      with:
-        entrypoint: /bin/sh
-        args: -c "cd /app && npm install && mkdir -p output && HOME=/home/node ./entrypoint.sh && cp output/cv.pdf /github/workspace/"
+      run: |
+        docker run --rm \
+          -e TARGET_URL="https://cv.denv.it" \
+          -e PUPPETEER_ARGS="--no-sandbox" \
+          -v ${{ github.workspace }}:/workspace \
+          dvitali/cv-render:latest \
+          /bin/sh -c "cd /app && npm install && mkdir -p output && HOME=/home/node ./entrypoint.sh && cp output/cv.pdf /workspace/"
     - name: Archive CV PDF
       uses: actions/upload-artifact@v4
       with:
