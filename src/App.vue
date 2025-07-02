@@ -35,6 +35,21 @@ import CVPublicSpeaking from "./components/CVPublicSpeaking.vue";
 
 div.page-break {
   page-break-after: always;
+  height: 0;
+  overflow: hidden;
+}
+
+@media print {
+  div.page-break {
+    page-break-after: auto;
+    break-after: page;
+  }
+  
+  /* Prevent orphaned content and empty pages */
+  * {
+    orphans: 3;
+    widows: 3;
+  }
 }
 
 div.sections {

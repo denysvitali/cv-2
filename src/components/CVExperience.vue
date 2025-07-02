@@ -53,7 +53,7 @@ let experiences: Experience[] = [
         ],
       },
     ],
-    pageBreak: true,
+    pageBreak: false,
   },
   {
     company: "Niantic",
@@ -196,7 +196,7 @@ let experiences: Experience[] = [
         technologies: ["php", "c-sharp", "js", "linux", "gitlab"],
       },
     ],
-    pageBreak: true,
+    pageBreak: false,
   },
   {
     company: "TRUE FLAVA",

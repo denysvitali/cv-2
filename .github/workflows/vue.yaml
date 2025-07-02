@@ -47,6 +47,8 @@ jobs:
           --user root \
           dvitali/cv-render:latest \
           /bin/sh -c "cp -r /app /tmp/app && cd /tmp/app && npm install && npx puppeteer browsers install chrome && mkdir -p output && HOME=/tmp ./entrypoint.sh && cp output/cv.pdf /workspace/ && chown 1001:121 /workspace/cv.pdf"
+    - name: Test PDF for empty pages
+      run: node test-pdf-pages.js
     - name: Archive CV PDF
       uses: actions/upload-artifact@v4
       with:

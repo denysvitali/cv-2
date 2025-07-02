@@ -19,7 +19,7 @@ h1,h2,h3,h4,h5 {
 
 @media print {
   * {
-      float: none !important;
+    float: none !important;
   }
 
   body {
@@ -40,5 +40,28 @@ h1,h2,h3,h4,h5 {
 
   h4 {
     font-size: 12px;
+  }
+
+  /* Enhanced page break control */
+  .page-break {
+    break-after: page;
+    page-break-after: always;
+  }
+  
+  /* Prevent empty pages by ensuring minimum content height */
+  .page-break + * {
+    min-height: 200px;
+  }
+  
+  /* Better page break handling for sections */
+  section, .section {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+  
+  /* Prevent orphans and widows */
+  p, li, .experience-item {
+    orphans: 2;
+    widows: 2;
   }
 }
