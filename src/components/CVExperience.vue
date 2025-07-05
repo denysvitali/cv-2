@@ -82,7 +82,7 @@ let experiences: Experience[] = [
         ],
       },
     ],
-    pageBreak: true,
+    pageBreak: false,
   },
   {
     company: "Swisscom",
@@ -143,7 +143,7 @@ let experiences: Experience[] = [
         ],
       },
     ],
-    pageBreak: true,
+    pageBreak: false,
   },
   {
     company: "Nanos",
