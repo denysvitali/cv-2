@@ -21,7 +21,7 @@ let talks = [
     name: "Porting Go to a new microcontroller",
     description: "Discussing about the challenges of porting Go* on an ESP32-C3 (Xtensa architecture)",
     date: "December 2023",
-    tech: ["go"],
+    tech: ["go", "linux"],
     links: [
       "https://docs.google.com/presentation/d/18jWccV-F2FguZiB5gXLkQFAhUFK_yl7FwkgtldwstxI/edit",
     ],
@@ -30,7 +30,7 @@ let talks = [
     name: "Introduction to Go Generics",
     description: "An introduction to Go Generics and how to use them effectively",
     date: "April 2022",
-    tech: ["go", "linux"],
+    tech: ["go"],
     links: [
       "https://go-generics.slides.denv.it/",
     ],
