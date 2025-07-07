@@ -31,9 +31,7 @@ let talks = [
     description: "An introduction to Go Generics and how to use them effectively",
     date: "April 2022",
     tech: ["go"],
-    links: [
-      "https://go-generics.slides.denv.it/",
-    ],
+    links: ["https://go-generics.slides.denv.it/"],
   },
 ];
 

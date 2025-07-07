@@ -50,6 +50,9 @@ let experiences: Experience[] = [
           "thanos",
           "azure",
           "kubernetes",
+          "clickhouse",
+          "jaeger",
+          "linux",
         ],
       },
     ],
@@ -117,6 +120,7 @@ let experiences: Experience[] = [
           "otel",
           "prometheus",
           "grafana",
+          "jaeger",
         ],
       },
       {
