@@ -21,13 +21,27 @@ type Position = {
 type Experience = {
   company: string;
   url?: string;
-  location: string;
-  icon: string;
+  location?: string;
+  icon?: string;
   positions: Position[];
   pageBreak?: boolean;
 };
 
 let experiences: Experience[] = [
+  {
+    company: "kaiko.ai",
+    url: "https://kaiko.ai",
+    positions: [
+      {
+        title: "Senior Platform Engineer",
+        from: "November 2025",
+        to: "Today",
+        description: "",
+        technologies: [],
+      },
+    ],
+    pageBreak: false,
+  },
   {
     company: "Open Systems",
     url: "https://open-systems.com",
@@ -37,7 +51,7 @@ let experiences: Experience[] = [
       {
         title: "Senior Platform Observability Engineer",
         from: "January 2025",
-        to: "Today",
+        to: "September 2025",
         description: marked.parse(OpenSystems2025),
         technologies: [
           "go",
@@ -240,11 +254,15 @@ let experiences: Experience[] = [
     <h2>Experience</h2>
     <div class="experiences">
       <div class="company" v-for="exp in experiences">
-        <img :src="'/companies/square/' + exp.icon" class="company-logo" />
+        <img
+          v-if="exp.icon"
+          :src="'/companies/square/' + exp.icon"
+          class="company-logo"
+        />
 
         <div class="experience-top">
           <div class="company-name">{{ exp.company }}</div>
-          <div class="location">{{ exp.location }}</div>
+          <div class="location" v-if="exp.location">{{ exp.location }}</div>
           <a :href="exp.url" v-if="exp.url" target="_blank">{{ exp.url }}</a>
         </div>
 
@@ -264,9 +282,16 @@ let experiences: Experience[] = [
                 </span>
               </div>
 
-              <div class="description" v-html="position.description"></div>
+              <div
+                v-if="position.description"
+                class="description"
+                v-html="position.description"
+              ></div>
 
-              <div class="tech-stack-section" v-if="position.technologies">
+              <div
+                class="tech-stack-section"
+                v-if="position.technologies.length"
+              >
                 <h4>Tech Stack</h4>
                 <div class="tech-stack">
                   <img
@@ -329,6 +354,7 @@ div.experiences {
     }
 
     div.experience-top {
+      grid-column: 2;
       display: flex;
       flex-direction: column;
       justify-content: center;
