@@ -8,6 +8,7 @@ import SwisscomExp2020 from "@/assets/experiences/2020-scs.md";
 import SwisscomExp2021 from "@/assets/experiences/2021-scs.md";
 import NianticExp2023 from "@/assets/experiences/2023-niantic.md";
 import OpenSystems2025 from "@/assets/experiences/2025-opensystems.md";
+import Kaiko2025 from "@/assets/experiences/2025-kaiko.md";
 import { marked } from "marked";
 
 type Position = {
@@ -38,8 +39,8 @@ let experiences: Experience[] = [
         title: "Senior Platform Engineer",
         from: "November 2025",
         to: "Today",
-        description: "",
-        technologies: [],
+        description: marked.parse(Kaiko2025),
+        technologies: ["argocd", "kubernetes"],
       },
     ],
     pageBreak: false,
