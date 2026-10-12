@@ -2,6 +2,7 @@
 let talks = [
   {
     name: "I'm a happy engineer",
+    date: "March 2026",
     tech: [],
     links: ["https://youtu.be/f1a_MRLibqU"],
   },
