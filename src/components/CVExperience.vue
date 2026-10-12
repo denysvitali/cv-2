@@ -32,6 +32,7 @@ let experiences: Experience[] = [
     company: "kaiko.ai",
     url: "https://kaiko.ai",
     icon: "kaiko.svg",
+    location: "Zurich, Switzerland",
     positions: [
       {
         title: "Senior Platform Engineer",
