@@ -2,8 +2,15 @@
 import { marked } from "marked";
 import TeamsApi from "@/assets/projects/teams-api.md";
 import GtfsServer from "@/assets/projects/gtfs-server.md";
+import Dc1Pmos from "@/assets/projects/dc-1-pmos.md";
 
 let projects = [
+  {
+    name: "dc-1-pmos",
+    url: "https://github.com/denysvitali/dc-1-pmos",
+    description: marked.parse(Dc1Pmos),
+    tech: ["linux"],
+  },
   {
     name: "teams-api",
     url: "https://github.com/fossteams/teams-api",
