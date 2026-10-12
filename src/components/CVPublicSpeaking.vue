@@ -1,6 +1,11 @@
 <script setup lang="ts">
 let talks = [
   {
+    name: "I'm a happy engineer",
+    tech: [],
+    links: ["https://youtu.be/f1a_MRLibqU"],
+  },
+  {
     name: "Go Meetup: Photobooth",
     description: "Building a photobooth from scratch",
     date: "April 2025",
@@ -19,7 +24,8 @@ let talks = [
   },
   {
     name: "Porting Go to a new microcontroller",
-    description: "Discussing about the challenges of porting Go* on an ESP32-C3 (Xtensa architecture)",
+    description:
+      "Discussing about the challenges of porting Go* on an ESP32-C3 (Xtensa architecture)",
     date: "December 2023",
     tech: ["go", "linux"],
     links: [
@@ -28,7 +34,8 @@ let talks = [
   },
   {
     name: "Introduction to Go Generics",
-    description: "An introduction to Go Generics and how to use them effectively",
+    description:
+      "An introduction to Go Generics and how to use them effectively",
     date: "April 2022",
     tech: ["go"],
     links: ["https://go-generics.slides.denv.it/"],
@@ -37,8 +44,8 @@ let talks = [
 
 function formatLink(link: string): string {
   const YOUTUBE_URL = "https://www.youtube.com/watch?v=";
-  
-  if (link.startsWith(YOUTUBE_URL)) {
+
+  if (link.startsWith(YOUTUBE_URL) || link.startsWith("https://youtu.be/")) {
     return "YouTube";
   }
   if (

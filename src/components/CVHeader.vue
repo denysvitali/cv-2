@@ -25,6 +25,11 @@ let contactInfo: ContactMap = {
     url: "mailto:denys@denv.it",
   },
   web: { icon: "fa-solid fa-link", value: "denv.it", url: "https://denv.it" },
+  blog: {
+    icon: "fa-solid fa-link",
+    value: "blog.denv.it",
+    url: "https://blog.denv.it",
+  },
   github: {
     icon: "fa-brands fa-github",
     value: "@denysvitali",
