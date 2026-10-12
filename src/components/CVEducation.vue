@@ -33,9 +33,10 @@ let education = [
   <div class="education">
     <h2>Education</h2>
     <div class="education-list">
-      <div class="school" v-for="school in education">
+      <div class="school" v-for="school in education" :key="school.name">
         <img
           :src="'/schools/' + school.icon"
+          :alt="school.name"
           class="school-logo"
           v-if="school.icon"
         />
@@ -52,16 +53,10 @@ let education = [
 
         <div class="school-desc">
           <div class="titles">
-            <div class="title" v-for="title in school.titles">
-              <div class="title">{{ title.title }}</div>
-              <div class="from-to">
-                <span class="from">
-                  {{ title.from }}
-                </span>
-                <span class="divider">-</span>
-                <span class="to">
-                  {{ title.to }}
-                </span>
+            <div class="title" v-for="title in school.titles" :key="title.title">
+              <div class="title-top">
+                <div class="title-name">{{ title.title }}</div>
+                <div class="from-to">{{ title.from }} – {{ title.to }}</div>
               </div>
 
               <div class="description" v-html="title.description"></div>
@@ -74,20 +69,24 @@ let education = [
 </template>
 
 <style lang="scss" scoped>
-$schoolLogoSize: 70px;
+$schoolLogoSize: 56px;
+
+div.education {
+  break-inside: avoid;
+}
+
 div.education-list {
   display: flex;
   flex-direction: column;
-  row-gap: 80px;
+  row-gap: 28px;
+
   div.school {
     display: grid;
     grid-template-columns: $schoolLogoSize 1fr;
     grid-auto-rows: auto;
-    column-gap: 40px;
-
-    div.school-name {
-      font-size: 1em;
-    }
+    column-gap: 24px;
+    row-gap: 12px;
+    break-inside: avoid;
 
     .school-logo {
       background-color: #fff;
@@ -96,9 +95,9 @@ div.education-list {
       padding: 5px;
       width: $schoolLogoSize;
       height: $schoolLogoSize;
-      object-fit: contain;
-      border-radius: 5px;
-      font-size: $schoolLogoSize * 0.6;
+      border-radius: 8px;
+      font-size: $schoolLogoSize * 0.55;
+      line-height: $schoolLogoSize - 10px;
       text-align: center;
     }
 
@@ -108,47 +107,57 @@ div.education-list {
       background-color: var(--color-position-line);
       width: 2px;
       height: auto;
+      border-radius: 2px;
     }
 
     div.school-top {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      height: $schoolLogoSize;
+      min-height: $schoolLogoSize;
 
       div.school-name {
         font-weight: bold;
-        font-size: 1.2em;
+        font-size: 1.3em;
+        line-height: 1.2;
+        color: var(--color-heading);
       }
 
       div.location {
-        font-size: 1em;
         color: var(--color-text-soft);
       }
     }
 
     div.school-desc {
+      min-width: 0;
+
       div.titles {
         display: flex;
         flex-direction: column;
         row-gap: 1em;
-        div.title {
-          div.title {
+
+        div.title-top {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: baseline;
+          column-gap: 1em;
+
+          div.title-name {
             font-weight: bold;
-            font-size: 1em;
+            font-size: 1.05em;
+            color: var(--color-heading);
           }
 
           div.from-to {
-            display: flex;
-            flex-direction: row;
-            column-gap: 5px;
             color: var(--color-text-soft);
             font-size: 0.9em;
+            white-space: nowrap;
           }
+        }
 
-          div.description {
-            margin-top: 2em;
-          }
+        div.description {
+          margin-top: 0.4em;
         }
       }
     }
@@ -156,43 +165,48 @@ div.education-list {
 }
 
 @media print {
-  $schoolLogoSize: 50px;
+  $schoolLogoSize: 40px;
+
   div.education-list {
-    row-gap: 1em;
+    row-gap: 1.2em;
+
     div.school {
       grid-template-columns: $schoolLogoSize 1fr;
+      column-gap: 16px;
+      row-gap: 6px;
+
       div.school-top {
-        height: $schoolLogoSize;
+        min-height: $schoolLogoSize;
       }
+
       .school-logo {
         width: $schoolLogoSize;
         height: $schoolLogoSize;
-        font-size: $schoolLogoSize * 0.6;
-      }
-      div.school-desc {
-        div.titles {
-          div.title {
-            div.description {
-              margin-top: 1em;
-            }
-          }
-        }
+        padding: 2px;
+        font-size: $schoolLogoSize * 0.55;
+        line-height: $schoolLogoSize - 4px;
       }
     }
   }
 }
 
 @media screen and (max-width: 600px) {
-  $logoSize: 50px;
-  div.education-list {
-    div.school {
-      grid-template-columns: $logoSize 1fr;
-      column-gap: 20px;
-      .school-logo {
-        font-size: calc($logoSize/2);
-        width: $logoSize;
-        height: $logoSize;
-      }
+  $logoSize: 40px;
+
+  div.education-list div.school {
+    grid-template-columns: $logoSize 1fr;
+    column-gap: 14px;
+
+    .school-logo {
+      width: $logoSize;
+      height: $logoSize;
+      padding: 3px;
+      font-size: $logoSize * 0.55;
+      line-height: $logoSize - 6px;
+    }
+
+    div.school-top {
+      min-height: $logoSize;
     }
   }
 }

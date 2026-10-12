@@ -57,4 +57,14 @@ div.sections {
   flex-direction: column;
   row-gap: 40px;
 }
+
+@media print {
+  .cv-header {
+    margin-bottom: 1.5em;
+  }
+
+  div.sections {
+    row-gap: 22px;
+  }
+}
 </style>

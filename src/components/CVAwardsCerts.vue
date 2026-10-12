@@ -24,56 +24,75 @@ let certificates: Certs[] = [
 </script>
 
 <template>
-  <h2>Awards / Certifications</h2>
-  <div class="certifications">
-    <div class="certificate" v-for="cert in certificates">
-      <a :href="cert.link" target="_blank" class="cert">
-        <img class="certificate" :src="`/certs/${cert.logo}.png`" />
+  <div class="awards-certs">
+    <h2>Awards / Certifications</h2>
+    <div class="certifications">
+      <a
+        :href="cert.link"
+        target="_blank"
+        class="certificate"
+        v-for="cert in certificates"
+        :key="cert.logo"
+      >
+        <img :src="`/certs/${cert.logo}.png`" :alt="cert.title" />
+        <span class="title">{{ cert.title }}</span>
       </a>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-div.certifications {
-  display: grid;
-  grid-template-columns: repeat(5, 150px);
-  column-gap: 20px;
-  row-gap: 10px;
-  max-width: 100%;
-  overflow: hidden;
-
-  div.certificate {
-    width: 150px;
-    img {
-      width: 100%;
-    }
-  }
+div.awards-certs {
+  break-inside: avoid;
 }
 
-@media screen and (max-width: 768px) {
-  div.certifications {
-    grid-template-columns: repeat(3, 150px);
+div.certifications {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+
+  a.certificate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 6px;
+    width: 150px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--color-text);
+
+    img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+    }
+
+    span.title {
+      font-size: 0.9em;
+      font-weight: 600;
+      line-height: 1.25;
+    }
   }
 }
 
 @media screen and (max-width: 570px) {
   div.certifications {
-    grid-template-columns: repeat(2, 150px);
-  }
-}
+    justify-content: space-around;
+    column-gap: 12px;
 
-@media screen and (max-width: 400px) {
-  div.certifications {
-    grid-template-columns: repeat(1, 150px);
+    a.certificate {
+      width: 130px;
+    }
   }
 }
 
 @media print {
-  div.certifications {
-    div.certificate {
-      width: 100px;
-      max-height: 100px;
+  div.certifications a.certificate {
+    width: 120px;
+
+    img {
+      width: 70px;
+      height: 70px;
     }
   }
 }

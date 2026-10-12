@@ -69,25 +69,27 @@ function formatLink(link: string): string {
         <div class="talk-top">
           <div class="talk-left">
             <div class="name">{{ talk.name }}</div>
-            <div class="links">
-              <template v-for="(link, index) in talk.links" :key="link">
-                <a :href="link" target="_blank">
-                  {{ formatLink(link) }}
-                </a>
-                <span v-if="index < talk.links.length - 1"> • </span>
-              </template>
+            <div class="meta">
+              <span class="date" v-if="talk.date">{{ talk.date }}</span>
+              <a
+                v-for="link in talk.links"
+                :key="link"
+                :href="link"
+                target="_blank"
+              >
+                {{ formatLink(link) }}
+              </a>
             </div>
           </div>
-          <div class="talk-right">
-            <div class="tech-stack">
-              <img
-                class="tech-icon"
-                v-for="tech in talk.tech"
-                :key="tech"
-                :alt="tech"
-                :src="'/tech/' + tech + '.svg'"
-              />
-            </div>
+          <div class="tech-stack">
+            <img
+              class="tech-icon"
+              v-for="tech in talk.tech"
+              :key="tech"
+              :alt="tech"
+              :title="tech"
+              :src="'/tech/' + tech + '.svg'"
+            />
           </div>
         </div>
         <div class="description" v-if="talk.description">
@@ -103,60 +105,54 @@ div.public-speaking {
   div.talks-list {
     display: flex;
     flex-direction: column;
-    row-gap: 2em;
+    row-gap: 1.3em;
 
     div.talk {
       display: flex;
       flex-direction: column;
+      break-inside: avoid;
 
       div.talk-top {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
+        column-gap: 1em;
 
-        div.talk-left {
+        div.name {
+          font-weight: bold;
+          font-size: 1.1em;
+          line-height: 1.25;
+          color: var(--color-heading);
+        }
+
+        div.meta {
           display: flex;
-          flex-direction: column;
+          flex-wrap: wrap;
+          font-size: 0.9em;
+          color: var(--color-text-soft);
 
-          div.name {
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-bottom: 0.5em;
-          }
-
-          div.links {
-            display: flex;
-            gap: 0.5em;
-            align-items: center;
-
-            a {
-              color: #007acc;
-              text-decoration: none;
-              font-size: 0.9em;
-
-              &:hover {
-                text-decoration: underline;
-              }
-            }
+          > * + *::before {
+            content: "·";
+            display: inline-block;
+            margin: 0 0.3em;
+            color: var(--color-text-soft);
           }
         }
 
-        div.talk-right {
-          div.tech-stack {
-            display: flex;
-            column-gap: 10px;
-            margin-top: 1em;
+        div.tech-stack {
+          display: flex;
+          flex-shrink: 0;
+          column-gap: 8px;
 
-            img.tech-icon {
-              height: 25px;
-            }
+          img.tech-icon {
+            height: 22px;
           }
         }
       }
 
       div.description {
-        margin-top: 1em;
-        line-height: 1.5;
+        margin-top: 0.3em;
       }
     }
   }

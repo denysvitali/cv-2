@@ -1,11 +1,12 @@
 @import './base.css';
 
 #app {
-  max-width: 800px;
+  max-width: 860px;
   margin: 0 auto;
   padding: 2rem;
 
   font-weight: normal;
+  line-height: 1.45;
 }
 
 h1,h2,h3,h4,h5 {
@@ -14,7 +15,30 @@ h1,h2,h3,h4,h5 {
   margin-bottom: 0.7em;
 
   break-before: auto;
-  break-after: auto;
+  break-after: avoid;
+}
+
+/* Section headings */
+h2 {
+  margin-top: 0;
+  margin-bottom: 1em;
+  padding-bottom: 0.35em;
+  font-size: 1.15em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-heading);
+  border-bottom: 2px solid var(--color-border);
+}
+
+@page {
+  size: A4;
+  margin: 1cm;
+}
+
+@media screen and (max-width: 600px) {
+  #app {
+    padding: 1.25rem;
+  }
 }
 
 @media print {
@@ -31,7 +55,13 @@ h1,h2,h3,h4,h5 {
   }
 
   h2 {
-    font-size: 16px;
+    font-size: 13px;
+    margin-bottom: 0.8em;
+  }
+
+  #app {
+    max-width: none;
+    padding: 0;
   }
   
   h3 {

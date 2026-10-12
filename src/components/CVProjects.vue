@@ -48,21 +48,23 @@ function formatLink(link: string): string {
         projects I've created. Check out my
         <a href="https://github.com/denysvitali/">GitHub profile</a>!
       </div>
-      <div class="project" v-for="project in projects">
+      <div class="project" v-for="project in projects" :key="project.name">
         <div class="project-top">
           <div class="project-left">
             <div class="name">{{ project.name }}</div>
-            <a :href="project.url">{{ formatLink(project.url) }}</a>
+            <a class="repo" :href="project.url" target="_blank">{{
+              formatLink(project.url)
+            }}</a>
           </div>
-          <div class="project-right">
-            <div class="tech-stack">
-              <img
-                class="tech-icon"
-                v-for="tech in project.tech"
-                :alt="tech"
-                :src="'/tech/' + tech + '.svg'"
-              />
-            </div>
+          <div class="tech-stack">
+            <img
+              class="tech-icon"
+              v-for="tech in project.tech"
+              :key="tech"
+              :alt="tech"
+              :title="tech"
+              :src="'/tech/' + tech + '.svg'"
+            />
           </div>
         </div>
         <div class="description" v-html="project.description"></div>
@@ -76,35 +78,49 @@ div.projects {
   div.projects-list {
     display: flex;
     flex-direction: column;
-    row-gap: 2em;
+    row-gap: 1.3em;
+
+    div.see-more {
+      color: var(--color-text-soft);
+      break-after: avoid;
+    }
 
     div.project {
       display: flex;
       flex-direction: column;
+      break-inside: avoid;
 
       div.project-top {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
+        column-gap: 1em;
 
         div.name {
           font-weight: bold;
-          font-size: 1.2em;
+          font-size: 1.1em;
+          line-height: 1.25;
+          color: var(--color-heading);
+        }
+
+        a.repo {
+          font-size: 0.9em;
         }
 
         div.tech-stack {
           display: flex;
-          column-gap: 10px;
-          margin-top: 1em;
+          flex-shrink: 0;
+          column-gap: 8px;
 
           img.tech-icon {
-            height: 25px;
+            height: 22px;
           }
         }
       }
 
       div.description {
-        margin-top: 1em;
+        margin-top: 0.3em;
       }
     }
   }

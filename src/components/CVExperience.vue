@@ -193,7 +193,7 @@ let experiences: Experience[] = [
     icon: "syndeck.png",
     positions: [
       {
-        title: "Software Engieeer",
+        title: "Software Engineer",
         from: "Jul 2018",
         to: "Dec 2018",
         description: marked.parse(SyndeckExp2018),
@@ -249,39 +249,48 @@ let experiences: Experience[] = [
     ],
   },
 ];
+
+function formatUrl(url: string): string {
+  return url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+}
 </script>
 
 <template>
   <div class="experience">
     <h2>Experience</h2>
     <div class="experiences">
-      <div class="company" v-for="exp in experiences">
+      <div class="company" v-for="exp in experiences" :key="exp.company">
         <img
           v-if="exp.icon"
           :src="'/companies/square/' + exp.icon"
+          :alt="exp.company"
           class="company-logo"
         />
 
         <div class="experience-top">
           <div class="company-name">{{ exp.company }}</div>
-          <div class="location" v-if="exp.location">{{ exp.location }}</div>
-          <a :href="exp.url" v-if="exp.url" target="_blank">{{ exp.url }}</a>
+          <div class="company-meta" v-if="exp.location || exp.url">
+            <span class="location" v-if="exp.location">{{ exp.location }}</span>
+            <a :href="exp.url" v-if="exp.url" target="_blank">{{
+              formatUrl(exp.url)
+            }}</a>
+          </div>
         </div>
 
         <div class="line"></div>
 
         <div class="experience-desc">
           <div class="positions">
-            <div class="position" v-for="position in exp.positions">
-              <div class="title">{{ position.title }}</div>
-              <div class="from-to">
-                <span class="from">
-                  {{ position.from }}
-                </span>
-                <span class="divider">-</span>
-                <span class="to">
-                  {{ position.to }}
-                </span>
+            <div
+              class="position"
+              v-for="position in exp.positions"
+              :key="position.title"
+            >
+              <div class="position-top">
+                <div class="title">{{ position.title }}</div>
+                <div class="from-to">
+                  {{ position.from }} – {{ position.to }}
+                </div>
               </div>
 
               <div
@@ -290,19 +299,15 @@ let experiences: Experience[] = [
                 v-html="position.description"
               ></div>
 
-              <div
-                class="tech-stack-section"
-                v-if="position.technologies.length"
-              >
-                <h4>Tech Stack</h4>
-                <div class="tech-stack">
-                  <img
-                    class="tech-entry"
-                    :src="`/tech/${language}.svg`"
-                    :title="language"
-                    v-for="language in position.technologies"
-                  />
-                </div>
+              <div class="tech-stack" v-if="position.technologies.length">
+                <img
+                  class="tech-entry"
+                  :src="`/tech/${language}.svg`"
+                  :title="language"
+                  :alt="language"
+                  :key="language"
+                  v-for="language in position.technologies"
+                />
               </div>
             </div>
           </div>
@@ -314,45 +319,42 @@ let experiences: Experience[] = [
 </template>
 
 <style lang="scss" scoped>
-$companyLogoSize: 70px;
+$companyLogoSize: 56px;
 
 div.experiences {
   display: flex;
   flex-direction: column;
-  row-gap: 80px;
+  row-gap: 32px;
 
   div.company {
     display: grid;
     grid-template-columns: $companyLogoSize 1fr;
-    grid-auto-rows: minmax(100px, auto);
-    column-gap: 40px;
+    grid-auto-rows: auto;
+    column-gap: 24px;
+    row-gap: 12px;
 
     div.page-break {
       display: none;
     }
 
-    div.company-name {
-      font-size: 1.2em;
-    }
-
     img.company-logo {
-      page-break-inside: avoid;
+      break-inside: avoid;
+      break-after: avoid;
       width: $companyLogoSize;
       height: $companyLogoSize;
       background-color: #fff;
       object-fit: contain;
       padding: 5px;
-      border-radius: 5px;
+      border-radius: 8px;
     }
 
     div.line {
-      page-break-before: avoid;
-      page-break-after: avoid;
       margin-left: auto;
       margin-right: auto;
       background-color: var(--color-position-line);
       width: 2px;
       height: auto;
+      border-radius: 2px;
     }
 
     div.experience-top {
@@ -360,74 +362,101 @@ div.experiences {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      height: $companyLogoSize;
-      page-break-before: avoid;
+      min-height: $companyLogoSize;
+      break-inside: avoid;
+      break-after: avoid;
 
       div.company-name {
+        font-size: 1.3em;
         font-weight: bold;
+        line-height: 1.2;
+        color: var(--color-heading);
       }
 
-      div.location {
-        font-size: 1em;
+      div.company-meta {
         color: var(--color-text-soft);
+
+        > * + *::before {
+          content: "·";
+          display: inline-block;
+          margin: 0 0.3em;
+          color: var(--color-text-soft);
+        }
       }
     }
 
     div.experience-desc {
-      page-break-before: avoid;
-      page-break-after: auto;
+      grid-column: 2;
+      min-width: 0;
 
       div.positions {
-        page-break-before: avoid;
         display: flex;
         flex-direction: column;
-        row-gap: 3em;
+        row-gap: 1.8em;
 
         div.position {
-          page-break-before: auto;
-
-          div.title {
-            font-weight: bold;
-            font-size: 1em;
-          }
-
-          div.from-to {
+          div.position-top {
             display: flex;
-            flex-direction: row;
-            column-gap: 5px;
-            color: var(--color-text-soft);
-            font-size: 0.9em;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            column-gap: 1em;
+            break-inside: avoid;
+            break-after: avoid;
+
+            div.title {
+              font-weight: bold;
+              font-size: 1.05em;
+              color: var(--color-heading);
+            }
+
+            div.from-to {
+              color: var(--color-text-soft);
+              font-size: 0.9em;
+              white-space: nowrap;
+            }
           }
 
           div.description {
-            margin-top: 2em;
-            page-break-after: auto;
+            margin-top: 0.6em;
+
+            :deep(ul) {
+              padding-left: 1.3em;
+              margin: 0.3em 0;
+            }
+
+            :deep(li) {
+              break-inside: avoid;
+            }
+
+            :deep(p + p) {
+              margin-top: 0.5em;
+            }
+
+            :deep(h4) {
+              font-size: 1em;
+              margin: 0.8em 0 0.2em;
+              break-after: avoid;
+            }
           }
 
           div.tech-stack {
-            page-break-inside: auto;
-            display: grid;
-            margin-left: auto;
-            margin-right: auto;
-            justify-items: center;
-            $logoSize: 60px;
-            $countColumns: 5;
-            $gap: 8px;
-            $logoPadding: 8px;
-            grid-template-columns: repeat($countColumns, $logoSize);
-            width: $logoSize * $countColumns + $gap * ($countColumns - 1);
-            column-gap: $gap;
-            row-gap: $gap;
-            margin-top: 1em;
+            $logoSize: 36px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 0.9em;
+            break-inside: avoid;
+            break-before: avoid;
 
             img.tech-entry {
               background-color: #fff;
               width: $logoSize;
               height: $logoSize;
-              padding: $logoPadding;
-              border-radius: 5px;
+              padding: 5px;
+              border-radius: 6px;
               display: block;
-              overflow: hidden;
+              object-fit: contain;
             }
           }
         }
@@ -437,19 +466,18 @@ div.experiences {
 }
 
 @media print {
-  * {
-  }
-
-  $companyLogoSize: 50px;
+  $companyLogoSize: 40px;
 
   div.experiences {
-    row-gap: 1em;
+    row-gap: 1.4em;
+
     div.company {
       grid-template-columns: $companyLogoSize 1fr;
-      grid-auto-rows: auto;
+      column-gap: 16px;
+      row-gap: 6px;
+
       div.experience-top {
-        height: $companyLogoSize;
-        margin-bottom: 1em;
+        min-height: $companyLogoSize;
       }
 
       div.page-break {
@@ -460,30 +488,21 @@ div.experiences {
       img.company-logo {
         width: $companyLogoSize;
         height: $companyLogoSize;
+        padding: 2px;
       }
 
-      div.experience-desc {
-        div.positions {
-          div.position {
-            div.description {
-              margin-top: 1em;
-            }
-            div.tech-stack {
-              $logoSize: 35px;
-              $countColumns: 8;
-              $gap: 8px;
-              $logoPadding: 4px;
-              grid-template-columns: repeat($countColumns, $logoSize);
-              width: $logoSize * $countColumns + $gap * ($countColumns - 1);
-              column-gap: $gap;
-              row-gap: $gap;
+      div.experience-desc div.positions {
+        row-gap: 1.2em;
 
-              img.tech-entry {
-                width: $logoSize;
-                height: $logoSize;
-                padding: $logoPadding;
-              }
-            }
+        div.position div.tech-stack {
+          $logoSize: 22px;
+          gap: 5px;
+          margin-top: 0.6em;
+
+          img.tech-entry {
+            width: $logoSize;
+            height: $logoSize;
+            padding: 1px;
           }
         }
       }
@@ -492,32 +511,20 @@ div.experiences {
 }
 
 @media screen and (max-width: 600px) {
-  $logoSize: 50px;
+  $logoSize: 40px;
 
-  div.experiences {
-    div.company {
-      grid-template-columns: $logoSize 1fr;
-      column-gap: 20px;
+  div.experiences div.company {
+    grid-template-columns: $logoSize 1fr;
+    column-gap: 14px;
 
-      img.company-logo {
-        width: $logoSize;
-        height: $logoSize;
-      }
+    img.company-logo {
+      width: $logoSize;
+      height: $logoSize;
+      padding: 3px;
     }
 
-    div.company div.experience-desc {
-      div.positions {
-        div.position {
-          div.tech-stack {
-            $logoSize: 60px;
-            $countColumns: 3;
-            $gap: 8px;
-            $logoPadding: 8px;
-            grid-template-columns: repeat($countColumns, $logoSize);
-            width: $logoSize * $countColumns + $gap * ($countColumns - 1);
-          }
-        }
-      }
+    div.experience-top {
+      min-height: $logoSize;
     }
   }
 }

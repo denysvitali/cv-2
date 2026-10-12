@@ -44,7 +44,7 @@ let contactInfo: ContactMap = {
 </script>
 <template>
   <header>
-    <img class="profile-picture" src="/profile.jpg" />
+    <img class="profile-picture" src="/profile.jpg" alt="Denys Vitali" />
     <div class="contact-info">
       <div class="my-name">Denys Vitali</div>
       <div class="basic-info-grid">
@@ -79,7 +79,8 @@ let contactInfo: ContactMap = {
 <style lang="scss" scoped>
 header {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  column-gap: 4em;
   align-items: center;
 
   img.profile-picture {
@@ -142,6 +143,24 @@ header {
       object-fit: cover;
       border-radius: $size;
       box-shadow: 0px 3px 24px 3px var(--color-shadow);
+    }
+  }
+}
+
+@media print {
+  header {
+    column-gap: 3em;
+
+    img.profile-picture {
+      $size: 130px;
+      width: $size;
+      height: $size;
+      box-shadow: none;
+    }
+
+    div.contact-info div.my-name {
+      font-size: 2.6em;
+      line-height: 1.2;
     }
   }
 }

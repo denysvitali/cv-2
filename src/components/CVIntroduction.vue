@@ -6,27 +6,30 @@ import { marked } from "marked";
 <template>
   <div class="introduction">
     <h2>Introduction</h2>
-    <p v-html="marked.parse(Introduction)"></p>
+    <div class="text" v-html="marked.parse(Introduction)"></div>
 
-    <div class="notice-section">
-      <h3>Note</h3>
-      <p>
-        This CV is also available as a web page:
-        <a href="https://cv.denv.it">https://cv.denv.it</a>
-      </p>
-    </div>
+    <p class="notice">
+      This CV is also available as a web page:
+      <a href="https://cv.denv.it">https://cv.denv.it</a>
+    </p>
   </div>
 </template>
 
 <style lang="scss" scoped>
-@media screen {
-  /* We don't want to show the notice on desktop / mobile, only when printed */
-  div.notice-section {
-    display: none;
-  }
+div.text :deep(p + p) {
+  margin-top: 0.5em;
 }
 
-div.notice-section {
-  margin-top: 2em;
+p.notice {
+  margin-top: 0.8em;
+  font-size: 0.9em;
+  color: var(--color-text-soft);
+}
+
+@media screen {
+  /* We don't want to show the notice on desktop / mobile, only when printed */
+  p.notice {
+    display: none;
+  }
 }
 </style>
