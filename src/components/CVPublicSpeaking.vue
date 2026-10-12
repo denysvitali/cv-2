@@ -113,6 +113,11 @@ div.public-speaking {
       flex-direction: column;
       break-inside: avoid;
 
+      // Don't leave a single talk stranded under the heading at a page end
+      &:first-child {
+        break-after: avoid;
+      }
+
       div.talk-top {
         display: flex;
         flex-direction: row;

@@ -103,6 +103,7 @@ header {
       font-weight: 700;
       width: 100%;
       text-align: center;
+      color: var(--color-heading);
     }
 
     div.basic-info-grid,

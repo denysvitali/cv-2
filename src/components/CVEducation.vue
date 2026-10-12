@@ -34,22 +34,22 @@ let education = [
     <h2>Education</h2>
     <div class="education-list">
       <div class="school" v-for="school in education" :key="school.name">
-        <img
-          :src="'/schools/' + school.icon"
-          :alt="school.name"
-          class="school-logo"
-          v-if="school.icon"
-        />
-        <div class="school-logo" v-else>
-          <font-awesome-icon icon="fa-solid fa-school" />
-        </div>
+        <div class="school-header">
+          <img
+            :src="'/schools/' + school.icon"
+            :alt="school.name"
+            class="school-logo"
+            v-if="school.icon"
+          />
+          <div class="school-logo" v-else>
+            <font-awesome-icon icon="fa-solid fa-school" />
+          </div>
 
-        <div class="school-top">
-          <div class="school-name">{{ school.name }}</div>
-          <div class="location">{{ school.location }}</div>
+          <div class="school-top">
+            <div class="school-name">{{ school.name }}</div>
+            <div class="location">{{ school.location }}</div>
+          </div>
         </div>
-
-        <div class="line"></div>
 
         <div class="school-desc">
           <div class="titles">
@@ -70,6 +70,32 @@ let education = [
 
 <style lang="scss" scoped>
 $schoolLogoSize: 56px;
+$railWidth: 2px;
+
+// Same header + rail layout as the experience section
+@mixin school-layout($logoSize, $gap, $bodyGap, $logoPadding) {
+  div.school-header {
+    column-gap: $gap;
+  }
+
+  .school-logo {
+    width: $logoSize;
+    height: $logoSize;
+    padding: $logoPadding;
+    font-size: $logoSize * 0.55;
+    line-height: $logoSize - $logoPadding * 2;
+  }
+
+  div.school-top {
+    min-height: $logoSize;
+  }
+
+  div.school-desc {
+    margin-top: $bodyGap;
+    margin-left: ($logoSize - $railWidth) * 0.5;
+    padding-left: ($logoSize - $railWidth) * 0.5 + $gap;
+  }
+}
 
 div.education {
   break-inside: avoid;
@@ -81,40 +107,28 @@ div.education-list {
   row-gap: 28px;
 
   div.school {
-    display: grid;
-    grid-template-columns: $schoolLogoSize 1fr;
-    grid-auto-rows: auto;
-    column-gap: 24px;
-    row-gap: 12px;
+    @include school-layout($schoolLogoSize, 24px, 12px, 5px);
     break-inside: avoid;
 
+    div.school-header {
+      display: flex;
+      align-items: center;
+    }
+
     .school-logo {
+      flex-shrink: 0;
       background-color: #fff;
       color: #000;
       object-fit: contain;
-      padding: 5px;
-      width: $schoolLogoSize;
-      height: $schoolLogoSize;
       border-radius: 8px;
-      font-size: $schoolLogoSize * 0.55;
-      line-height: $schoolLogoSize - 10px;
       text-align: center;
-    }
-
-    div.line {
-      margin-left: auto;
-      margin-right: auto;
-      background-color: var(--color-position-line);
-      width: 2px;
-      height: auto;
-      border-radius: 2px;
     }
 
     div.school-top {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      min-height: $schoolLogoSize;
+      min-width: 0;
 
       div.school-name {
         font-weight: bold;
@@ -129,7 +143,7 @@ div.education-list {
     }
 
     div.school-desc {
-      min-width: 0;
+      border-left: $railWidth solid var(--color-position-line);
 
       div.titles {
         display: flex;
@@ -171,21 +185,7 @@ div.education-list {
     row-gap: 1.2em;
 
     div.school {
-      grid-template-columns: $schoolLogoSize 1fr;
-      column-gap: 16px;
-      row-gap: 6px;
-
-      div.school-top {
-        min-height: $schoolLogoSize;
-      }
-
-      .school-logo {
-        width: $schoolLogoSize;
-        height: $schoolLogoSize;
-        padding: 2px;
-        font-size: $schoolLogoSize * 0.55;
-        line-height: $schoolLogoSize - 4px;
-      }
+      @include school-layout($schoolLogoSize, 16px, 6px, 2px);
     }
   }
 }
@@ -194,20 +194,7 @@ div.education-list {
   $logoSize: 40px;
 
   div.education-list div.school {
-    grid-template-columns: $logoSize 1fr;
-    column-gap: 14px;
-
-    .school-logo {
-      width: $logoSize;
-      height: $logoSize;
-      padding: 3px;
-      font-size: $logoSize * 0.55;
-      line-height: $logoSize - 6px;
-    }
-
-    div.school-top {
-      min-height: $logoSize;
-    }
+    @include school-layout($logoSize, 14px, 10px, 3px);
   }
 }
 </style>

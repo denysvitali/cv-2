@@ -260,24 +260,26 @@ function formatUrl(url: string): string {
     <h2>Experience</h2>
     <div class="experiences">
       <div class="company" v-for="exp in experiences" :key="exp.company">
-        <img
-          v-if="exp.icon"
-          :src="'/companies/square/' + exp.icon"
-          :alt="exp.company"
-          class="company-logo"
-        />
+        <div class="company-header">
+          <img
+            v-if="exp.icon"
+            :src="'/companies/square/' + exp.icon"
+            :alt="exp.company"
+            class="company-logo"
+          />
 
-        <div class="experience-top">
-          <div class="company-name">{{ exp.company }}</div>
-          <div class="company-meta" v-if="exp.location || exp.url">
-            <span class="location" v-if="exp.location">{{ exp.location }}</span>
-            <a :href="exp.url" v-if="exp.url" target="_blank">{{
-              formatUrl(exp.url)
-            }}</a>
+          <div class="experience-top">
+            <div class="company-name">{{ exp.company }}</div>
+            <div class="company-meta" v-if="exp.location || exp.url">
+              <span class="location" v-if="exp.location">{{
+                exp.location
+              }}</span>
+              <a :href="exp.url" v-if="exp.url" target="_blank">{{
+                formatUrl(exp.url)
+              }}</a>
+            </div>
           </div>
         </div>
-
-        <div class="line"></div>
 
         <div class="experience-desc">
           <div class="positions">
@@ -320,51 +322,64 @@ function formatUrl(url: string): string {
 
 <style lang="scss" scoped>
 $companyLogoSize: 56px;
+$railWidth: 2px;
 
+// Header row (logo + name) followed by a body hanging off a vertical rail
+// centered under the logo. Plain block layout so it fragments well in print.
+@mixin company-layout($logoSize, $gap, $bodyGap) {
+  div.company-header {
+    column-gap: $gap;
+  }
+
+  img.company-logo {
+    width: $logoSize;
+    height: $logoSize;
+  }
+
+  div.experience-top {
+    min-height: $logoSize;
+  }
+
+  div.experience-desc {
+    margin-top: $bodyGap;
+    margin-left: ($logoSize - $railWidth) * 0.5;
+    padding-left: ($logoSize - $railWidth) * 0.5 + $gap;
+  }
+}
+
+// Block layout (not flex) so the browser can break pages inside a company
 div.experiences {
-  display: flex;
-  flex-direction: column;
-  row-gap: 32px;
+  div.company + div.company {
+    margin-top: 32px;
+  }
 
   div.company {
-    display: grid;
-    grid-template-columns: $companyLogoSize 1fr;
-    grid-auto-rows: auto;
-    column-gap: 24px;
-    row-gap: 12px;
+    @include company-layout($companyLogoSize, 24px, 12px);
 
     div.page-break {
       display: none;
     }
 
-    img.company-logo {
+    div.company-header {
+      display: flex;
+      align-items: center;
       break-inside: avoid;
       break-after: avoid;
-      width: $companyLogoSize;
-      height: $companyLogoSize;
+    }
+
+    img.company-logo {
+      flex-shrink: 0;
       background-color: #fff;
       object-fit: contain;
       padding: 5px;
       border-radius: 8px;
     }
 
-    div.line {
-      margin-left: auto;
-      margin-right: auto;
-      background-color: var(--color-position-line);
-      width: 2px;
-      height: auto;
-      border-radius: 2px;
-    }
-
     div.experience-top {
-      grid-column: 2;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      min-height: $companyLogoSize;
-      break-inside: avoid;
-      break-after: avoid;
+      min-width: 0;
 
       div.company-name {
         font-size: 1.3em;
@@ -386,13 +401,12 @@ div.experiences {
     }
 
     div.experience-desc {
-      grid-column: 2;
-      min-width: 0;
+      border-left: $railWidth solid var(--color-position-line);
 
       div.positions {
-        display: flex;
-        flex-direction: column;
-        row-gap: 1.8em;
+        div.position + div.position {
+          margin-top: 1.8em;
+        }
 
         div.position {
           div.position-top {
@@ -469,16 +483,12 @@ div.experiences {
   $companyLogoSize: 40px;
 
   div.experiences {
-    row-gap: 1.4em;
+    div.company + div.company {
+      margin-top: 1.4em;
+    }
 
     div.company {
-      grid-template-columns: $companyLogoSize 1fr;
-      column-gap: 16px;
-      row-gap: 6px;
-
-      div.experience-top {
-        min-height: $companyLogoSize;
-      }
+      @include company-layout($companyLogoSize, 16px, 6px);
 
       div.page-break {
         display: block;
@@ -486,13 +496,13 @@ div.experiences {
       }
 
       img.company-logo {
-        width: $companyLogoSize;
-        height: $companyLogoSize;
         padding: 2px;
       }
 
       div.experience-desc div.positions {
-        row-gap: 1.2em;
+        div.position + div.position {
+          margin-top: 1.2em;
+        }
 
         div.position div.tech-stack {
           $logoSize: 22px;
@@ -514,17 +524,10 @@ div.experiences {
   $logoSize: 40px;
 
   div.experiences div.company {
-    grid-template-columns: $logoSize 1fr;
-    column-gap: 14px;
+    @include company-layout($logoSize, 14px, 10px);
 
     img.company-logo {
-      width: $logoSize;
-      height: $logoSize;
       padding: 3px;
-    }
-
-    div.experience-top {
-      min-height: $logoSize;
     }
   }
 }
