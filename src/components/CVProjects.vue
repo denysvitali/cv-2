@@ -12,18 +12,6 @@ let projects = [
     tech: ["linux"],
   },
   {
-    name: "teams-api",
-    url: "https://github.com/fossteams/teams-api",
-    description: marked.parse(TeamsApi),
-    tech: ["go", "flutter", "vue"],
-  },
-  {
-    name: "gtfs-server",
-    url: "https://github.com/denysvitali/gtfs-server",
-    description: marked.parse(GtfsServer),
-    tech: ["rust", "postgresql"],
-  },
-  {
     name: "surface-pro-x-linux",
     url: "https://github.com/denysvitali/surface-pro-x-linux",
     description: "Linux kernel for the Microsoft Surface Pro X (SQ2)",
@@ -34,6 +22,18 @@ let projects = [
     url: "https://github.com/pixelc-linux/documentation",
     description: "Patches and images to run Linux on the Google Pixel C",
     tech: ["linux"],
+  },
+  {
+    name: "gtfs-server",
+    url: "https://github.com/denysvitali/gtfs-server",
+    description: marked.parse(GtfsServer),
+    tech: ["rust", "postgresql"],
+  },
+  {
+    name: "teams-api",
+    url: "https://github.com/fossteams/teams-api",
+    description: marked.parse(TeamsApi),
+    tech: ["go", "flutter", "vue"],
   },
 ];
 
