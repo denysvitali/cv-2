@@ -1,4 +1,4 @@
-**Platform engineer by trade, hacker by nature.** I've been shipping software since I was 14, and today I build the platforms that keep engineers fast and production boring.
+**Platform engineer by trade, hacker by nature.** I build the platforms that keep engineers fast and production boring.
 
 My sweet spot is where infrastructure meets security: GitOps across clouds and clusters at kaiko.ai, observability for 10k+ devices at Open Systems, cloud-security tooling at Niantic and conversational AI platforms at Swisscom. When something breaks upstream I fix it there, with merged contributions to Prometheus Operator, Jaeger and HashiCorp Waypoint.
 
