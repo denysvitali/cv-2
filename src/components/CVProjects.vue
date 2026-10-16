@@ -51,7 +51,7 @@ function formatLink(link: string): string {
     <h2>Projects</h2>
     <div class="projects-list">
       <div class="see-more">
-        This is just an incredibly small part of the many (190+) Open Source
+        This is just an incredibly small part of the many (200+) Open Source
         projects I've created. Check out my
         <a href="https://github.com/denysvitali/">GitHub profile</a>!
       </div>
