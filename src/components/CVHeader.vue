@@ -40,6 +40,11 @@ let contactInfo: ContactMap = {
     value: "denysvitali",
     url: "https://www.linkedin.com/in/denysvitali/",
   },
+  x: {
+    icon: "fa-brands fa-x-twitter",
+    value: "@DenysVitali",
+    url: "https://x.com/DenysVitali",
+  },
 };
 </script>
 <template>
