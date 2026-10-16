@@ -30,9 +30,10 @@ h2 {
   border-bottom: 2px solid var(--color-border);
 }
 
+/* Single source of truth for the printed paper: the renderer uses preferCSSPageSize */
 @page {
-  size: A4;
-  margin: 1cm;
+  size: 210mm 297mm;
+  margin: 12mm;
 }
 
 @media screen and (max-width: 600px) {

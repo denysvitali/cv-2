@@ -11,17 +11,11 @@ const puppeteer = require("puppeteer");
 
   await page.goto(process.env.TARGET_URL || "http://172.18.0.1:3001");
 
-  let margin = "1cm";
-
+  // Paper size (A4) and margins are defined by the @page rule in src/assets/main.css.
+  // Puppeteer's "A4" format rounds to inches (210.2 x 297.3 mm), so let the CSS win.
   await page.pdf({
     path: "output/cv.pdf",
-    format: "A4",
-    margin: {
-      top: margin,
-      left: margin,
-      bottom: margin,
-      right: margin,
-    },
+    preferCSSPageSize: true,
     printBackground: true,
   });
 
