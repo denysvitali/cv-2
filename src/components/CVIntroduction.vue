@@ -20,6 +20,12 @@ div.text :deep(p + p) {
   margin-top: 0.5em;
 }
 
+/* Lead sentence: the global reset sets font-weight: normal on everything */
+div.text :deep(strong) {
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
 p.notice {
   margin-top: 0.8em;
   font-size: 0.9em;

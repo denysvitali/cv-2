@@ -1,5 +1,5 @@
-I am a Software Engineer and DevOps Engineer with a background in security.
-  
-I am passionate about software development, cloud platforms, and security, with a deep commitment to excellence. I have a particular affinity for working with and contributing to open-source technologies. Problem-solving is at the core of my work, and I consistently apply my expertise and knowledge to deliver high-quality results. I am dedicated to continuous learning and always eager to expand my skill set.
+**Platform engineer with a hacker's mindset.** I build the infrastructure that keeps engineers fast and production boring, and I take things apart to make them safer.
 
-In my free time I like to reverse engineer things, do some bug bounty hunting and contribute to open-source projects. With the advent of AI, the number of my side projects has increased considerably: I use AI to build tools that make my AI agents more efficient (MCPs, harnesses, apps and daemons to remotely control my sessions).
+Over the past years I've moved across DevOps, observability and security roles, from conversational AI at Swisscom to cloud security at Niantic, an observability platform for 10k+ devices at Open Systems and now multi-cloud platforms and agentic tooling at kaiko.ai. Open source is how I work: I contribute upstream to projects such as ArgoCD, Prometheus Operator, Jaeger, Grafana Tempo and the OpenTelemetry Collector.
+
+Off the clock I reverse engineer hardware, hunt for bug bounties and port Linux to devices that never asked for it. Since AI arrived my side projects have multiplied: I build the tools that make my AI agents better at their job (MCP servers, harnesses, apps and daemons to drive my sessions remotely).
