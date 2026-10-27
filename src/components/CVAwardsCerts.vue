@@ -7,7 +7,7 @@ type Certs = {
 let certificates: Certs[] = [
   {
     title: "Rootly Reliability Top 50 2026",
-    logo: "rootly.svg",
+    logo: "rootly-top50-2026.jpg",
     link: "https://rootly.com/top50",
   },
   {
@@ -88,12 +88,6 @@ div.certifications {
     a.certificate {
       width: 130px;
     }
-  }
-}
-
-@media screen and (prefers-color-scheme: dark) {
-  img[src="/certs/rootly.svg"] {
-    filter: invert(1);
   }
 }
 
