@@ -1,10 +1,14 @@
 <script setup lang="ts">
 type Certs = {
   title: string;
-  logo: string;
+  logo?: string;
   link: string;
 };
 let certificates: Certs[] = [
+  {
+    title: "Rootly Reliability Top 50 2026",
+    link: "https://rootly.com/top50",
+  },
   {
     title: "CKA: Certified Kubernetes Administrator",
     logo: "cka",
@@ -34,7 +38,7 @@ let certificates: Certs[] = [
         v-for="cert in certificates"
         :key="cert.logo"
       >
-        <img :src="`/certs/${cert.logo}.png`" :alt="cert.title" />
+        <img v-if="cert.logo" :src="`/certs/${cert.logo}.png`" :alt="cert.title" />
         <span class="title">{{ cert.title }}</span>
       </a>
     </div>
