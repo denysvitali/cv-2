@@ -7,21 +7,22 @@ type Certs = {
 let certificates: Certs[] = [
   {
     title: "Rootly Reliability Top 50 2026",
+    logo: "rootly.svg",
     link: "https://rootly.com/top50",
   },
   {
     title: "CKA: Certified Kubernetes Administrator",
-    logo: "cka",
+    logo: "cka.png",
     link: "https://www.credly.com/badges/966660e6-d780-43a1-94cd-71bd4b5ec6ae",
   },
   {
     title: "HashiCorp Core Contributor 2023",
-    logo: "hashicorp-core-2023",
+    logo: "hashicorp-core-2023.png",
     link: "https://www.credly.com/badges/7e7f6ee7-2658-4a06-9551-47ed0f5b40b6",
   },
   {
     title: "HashiCorp Core Contributor 2022",
-    logo: "hashicorp-core-2022",
+    logo: "hashicorp-core-2022.png",
     link: "https://www.credly.com/badges/aab7cccb-ddc7-4b25-84cd-055ee877169e",
   },
 ];
@@ -38,7 +39,7 @@ let certificates: Certs[] = [
         v-for="cert in certificates"
         :key="cert.logo"
       >
-        <img v-if="cert.logo" :src="`/certs/${cert.logo}.png`" :alt="cert.title" />
+        <img v-if="cert.logo" :src="`/certs/${cert.logo}`" :alt="cert.title" />
         <span class="title">{{ cert.title }}</span>
       </a>
     </div>
@@ -87,6 +88,12 @@ div.certifications {
     a.certificate {
       width: 130px;
     }
+  }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  img[src="/certs/rootly.svg"] {
+    filter: invert(1);
   }
 }
 
